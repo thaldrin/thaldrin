@@ -1,0 +1,12 @@
+{
+  "dependencies": {
+    "@sniff/armpits": "^0.0.6",
+    "axios": "^0.21.1",
+    "leeks.js": "^0.0.9",
+    "util": "^0.12.3",
+    "wumpcord": "^1.0.4"
+  },
+  "devDependencies": {
+    "@types/node": "^14.14.20"
+  }
+}
