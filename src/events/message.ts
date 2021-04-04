@@ -10,15 +10,11 @@ export = {
 
 
         // @ts-ignore
-        // console.log(client.guilds.cache.size)
-        client.guilds.cache.forEach(guild => {
-            console.log(`${guild.name} | ${guild.id}`)
-        })
-        // let { data, error } = await supabase.from<Server>("servers").select().eq(`server_id`, message.guild.id)
-        // if (data?.length === 0) await supabase.from<Server>("servers").insert({
-        //     server_id: message.guild?.id
+        let { data, error } = await supabase.from<Server>("servers").select().eq(`server_id`, message.guild.id)
+        if (data?.length === 0) await supabase.from<Server>("servers").insert({
+            server_id: message.guild?.id
 
-        // })
+        })
 
 
 
