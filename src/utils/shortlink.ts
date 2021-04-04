@@ -1,22 +1,24 @@
 // Initial code taken from @Cynosphere, rewritten by me
 const Regex = /(?:\s|^)(gh|gl|yt|tw|npm|tv|bc|bcu|wc|sc|bot|fav|fau)\/([a-zA-Z0-9-_.#@/!]*)/g;
-const Links = {
-    gh: "https://github.com/$link$",
-    gl: "https://gitlab.com/$link$",
-    yt: "https://youtu.be/$link$",
-    tw: "https://twitter.com/$link$",
-    npm: "https://npm.im/$link$",
-    tv: "https://twitch.tv/$link$",
-    bc: "https://$link$.bandcamp.com/",
-    bcu: "https://bandcamp.com/$link$",
-    wc: "https://werewolf.codes/$link$",
-    sc: "https://soundcloud.com/$link$",
+const Links: {
+    [value: string]: string
+} = {
+    "gh": "https://github.com/$link$",
+    "gl": "https://gitlab.com/$link$",
+    "yt": "https://youtu.be/$link$",
+    "tw": "https://twitter.com/$link$",
+    "npm": "https://npm.im/$link$",
+    "tv": "https://twitch.tv/$link$",
+    "bc": "https://$link$.bandcamp.com/",
+    "bcu": "https://bandcamp.com/$link$",
+    "wc": "https://werewolf.codes/$link$",
+    "sc": "https://soundcloud.com/$link$",
     // fa: "https://furaffinity.net/$link$",
-    fav: "https://furaffinity.net/view/$link$",
-    fau: "https://furaffinity.net/user/$link$",
-    bot: "https://discordapp.com/oauth2/authorize?client_id=$link$&scope=bot"
+    "fav": "https://furaffinity.net/view/$link$",
+    "fau": "https://furaffinity.net/user/$link$",
+    "bot": "https://discordapp.com/oauth2/authorize?client_id=$link$&scope=bot"
 };
-export const SiteNames = {
+const SiteNames = {
     gh: "Github",
     gl: "Gitlab",
     gd: "Gitdab",
@@ -33,11 +35,11 @@ export const SiteNames = {
     bot: "Bot Invites",
     wc: "werewolf.codes"
 };
-import { MessageCreateEvent } from "wumpcord";
-export async function Shortlink(event: MessageCreateEvent, settings: boolean) {
+
+export async function Shortlink(content: string, settings: boolean) {
     let Possible: string[] = []
-    if (!settings || settings === null || settings === undefined) return;
-    let res = event.message.content.match(Regex)
+    if (!settings) return;
+    let res = content.match(Regex)
     console.log(res)
     if (!res) return;
     res = res.map(x => (x.startsWith(' ') ? x.substring(1) : x))
@@ -51,6 +53,6 @@ export async function Shortlink(event: MessageCreateEvent, settings: boolean) {
         }
     }
     // @ts-ignore
-    return event.message.channel.send(Possible.join('\n'))
+    return Possible.join('\n')
 
 }

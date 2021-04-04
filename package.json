@@ -1,12 +1,32 @@
 {
+  "name": "thaldrin",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "build": "tsc",
+    "start": "node build/index.js",
+    "dev": "rm -r build && npm run build && npm run start"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/thaldrin/thaldrin.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/thaldrin/thaldrin/issues"
+  },
+  "homepage": "https://github.com/thaldrin/thaldrin#readme",
   "dependencies": {
-    "@sniff/armpits": "^0.0.6",
-    "axios": "^0.21.1",
-    "leeks.js": "^0.0.9",
-    "util": "^0.12.3",
-    "wumpcord": "^1.0.4"
+    "@supabase/supabase-js": "^1.7.7",
+    "@thaldrin/sourcefinder": "^1.0.0",
+    "discord.js": "^12.5.1",
+    "yiff": "^3.0.2"
   },
   "devDependencies": {
-    "@types/node": "^14.14.20"
+    "@types/node": "^14.14.37",
+    "@types/ws": "^7.4.1"
   }
 }

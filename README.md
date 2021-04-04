@@ -1,11 +1,11 @@
 # Thaldrin
 
-Repo for Thaldrin V4, completely rewritten in [auguwu/wumpcord](https://github.com/auguwu/wumpcord)
-
-# Licence
-
-None yet, but Credit me if you use parts of my code.
-
+Repo for Thaldrin v4, rewritten entirely based on his previous code.
 
 # Authors
-- Lio Melio - *Owner/Developer* - [@HimboLion](https://twitter.com/HimboLion)
+
+- Lio Melio - _Owner/Developer_ - [@HimboLion](https://twitter.com/HimboLion)
+
+# License
+
+**Thaldrin** is released under the [MIT](/LICENSE) License
