@@ -4,7 +4,7 @@ export type CommandContext = {
 
 
 export type Server = {
-    id: string
+    readonly id: string
     server_id: string
     prefix: string[]
     locale: string
@@ -14,4 +14,11 @@ export type Server = {
     source: boolean
     interactiontext: boolean
 
+}
+
+export type Usage = {
+    readonly id: string
+    name: string,
+    type: string
+    amount: number
 }

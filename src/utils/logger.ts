@@ -34,7 +34,7 @@ const Logger = Winston.createLogger({
         transport, errortransport,
         new Winston.transports.Console({
             format: Winston.format.combine(
-                Winston.format.timestamp({ format: "HH:mm DD-MM-YYYY" }),
+                Winston.format.timestamp({ format: "DD-MM-YYYY / HH:mm:ss" }),
                 Winston.format.printf(info => {
                     let color = colors[info.level]
                     let timestamp = chalk.gray(`[${info.timestamp}]`)
