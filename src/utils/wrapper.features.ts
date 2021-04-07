@@ -33,7 +33,6 @@ export async function Shortlink(message: Message, setting: boolean) {
     let links = await shortlink(message.content)
 
     if (!links) return;
-    links.forEach(link => { return `<${link}>` })
     return message.channel.send(links?.join("\n"))
 
 }
@@ -42,5 +41,6 @@ export async function SourceFinder(message: Message, setting: boolean) {
     if (!setting) return;
     if (disabled(message, 'sf')) return;
     let sources = await sourcefinder.find(message.content)
-    console.log(sources)
+    if (!sources) return;
+    return message.channel.send(sources?.join('\n'))
 }
