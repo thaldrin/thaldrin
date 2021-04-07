@@ -36,9 +36,8 @@ const SiteNames = {
     wc: "werewolf.codes"
 };
 
-export async function Shortlink(content: string, settings: boolean) {
+export default async function Shortlink(content: string) {
     let Possible: string[] = []
-    if (!settings) return;
     let res = content.match(Regex)
     console.log(res)
     if (!res) return;
