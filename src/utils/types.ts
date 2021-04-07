@@ -6,12 +6,12 @@ export type CommandContext = {
 export type Server = {
     readonly id: string
     server_id: string
-    prefix: string[]
     locale: string
+    prefix: string[]
 
     shortlinks: boolean
+    sourcefinder: boolean
     embeds: boolean
-    source: boolean
     interactiontext: boolean
 
 }
