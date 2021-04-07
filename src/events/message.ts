@@ -32,11 +32,14 @@ export = {
         // ? Get Server Config
         let { data: server_data, error: server_error } = await supabase.from<Server>("servers").select().eq(`server_id`, message.guild.id).limit(1)
 
+        // ? Check if Message includes shortlinks
+        await Shortlink(message, server_data[0].shortlinks)
+
+
         // ! Prefix
         let PrefixArray: string[] = [...config.variables.prefix, [(server_data[0].prefix ? server_data[0].prefix : [])]].flat(Infinity)
-        console.log(`Prefixes for ${message.guild.name} | `, PrefixArray)
 
-        Shortlink(message.content, server_data[0].shortlinks)
+
 
     }
 }

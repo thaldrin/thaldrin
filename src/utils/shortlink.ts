@@ -1,8 +1,9 @@
 // Initial code taken from @Cynosphere, rewritten by me
-const Regex = /(?:\s|^)(gh|gl|yt|tw|npm|tv|bc|bcu|wc|sc|bot|fav|fau)\/([a-zA-Z0-9-_.#@/!]*)/g;
-const Links: {
-    [value: string]: string
-} = {
+
+const Regex =
+    /(?:\s|^)(gh|gl|yt|tw|npm|tv|bc|bcu|wc|sc|bot|fav|fau)\/([a-zA-Z0-9-_.#@/!]*)/g;
+
+const Links: { [value: string]: string } = {
     "gh": "https://github.com/$link$",
     "gl": "https://gitlab.com/$link$",
     "yt": "https://youtu.be/$link$",
@@ -16,7 +17,7 @@ const Links: {
     // fa: "https://furaffinity.net/$link$",
     "fav": "https://furaffinity.net/view/$link$",
     "fau": "https://furaffinity.net/user/$link$",
-    "bot": "https://discordapp.com/oauth2/authorize?client_id=$link$&scope=bot"
+    "bot": "https://discordapp.com/oauth2/authorize?client_id=$link$&scope=bot",
 };
 const SiteNames = {
     gh: "Github",
@@ -33,25 +34,23 @@ const SiteNames = {
     bcu: "Bandcamp User",
     sc: "Soundcloud",
     bot: "Bot Invites",
-    wc: "werewolf.codes"
+    wc: "werewolf.codes",
 };
 
 export default async function Shortlink(content: string) {
-    let Possible: string[] = []
-    let res = content.match(Regex)
-    console.log(res)
+    let Possible: string[] = [];
+    let res = content.match(Regex);
     if (!res) return;
-    res = res.map(x => (x.startsWith(' ') ? x.substring(1) : x))
+    res = res.map((x) => (x.startsWith(" ") ? x.substring(1) : x));
     for (const Shortlink in res) {
         for (const Link in Links) {
-            let content = res[Shortlink]
+            let content = res[Shortlink];
             if (!content.startsWith(Link)) continue;
-            content = content.replace(Link + '/', "")
-            content = Links[Link].replace("$link$", content)
-            Possible.push(content)
+            content = content.replace(Link + "/", "");
+            content = Links[Link].replace("$link$", content);
+            Possible.push(`<${content}>`);
         }
     }
     // @ts-ignore
-    return Possible.join('\n')
-
+    return Possible;
 }

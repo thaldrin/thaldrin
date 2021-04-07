@@ -1,20 +1,21 @@
 import sourcefinder from "./sourcefinder";
 import shortlink from "./shortlink";
-import { Message } from "discord.js";
+import { Message, TextChannel } from "discord.js";
 
 
 let SL = /(nosl|no-?short(link(s|ing)?)?)/gmi
 let SF = /(nosf|no-?source(find(er|ing)?)?)/gmi
 
 
-async function check(content: string, feature: string) {
+function disabled(message: Message, feature: string) {
+
     switch (feature) {
         case 'sl':
-            console.log(content.match(SL))
-            break;
+            // @ts-ignore
+            return SL.test((message.channel as TextChannel).topic)
 
         default:
-            break;
+            throw new Error("No Feature was defined.")
     }
 }
 
@@ -22,6 +23,11 @@ async function check(content: string, feature: string) {
 
 export default async function Shortlink(message: Message, setting: boolean) {
     if (!setting) return;
-    let enabled = await check(message.content, 'sl')
+    if (disabled(message, 'sl')) return;
+    let links = await shortlink(message.content)
+
+    if (!links) return;
+    links.forEach(link => { return `<${link}>` })
+    return message.channel.send(links?.join("\n"))
 
 }
