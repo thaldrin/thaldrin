@@ -4,6 +4,7 @@ import Logger from "../utils/logger";
 import supabase from "../utils/database";
 import { Server, Usage } from "../utils/types";
 import config from "../../config";
+import Shortlink from "../utils/wrapper.features";
 
 export = {
     name: "message",
@@ -20,19 +21,22 @@ export = {
         let { data: updated_usage_data, error } = await supabase.from<Usage>('usage').update({ amount: usage_data[0].amount + 1 }).select().eq("name", "message")
         // ! Messages seen
 
-        // ? Getting Server config
-        let { data: server_data, error: server_error } = await supabase.from<Server>("servers").select().eq(`server_id`, message.guild.id).limit(1)
-        if (server_data?.length === 0) {
+
+        // ? Check if Server exists in DB
+        let { data: check_data, error: check_error } = await supabase.from<Server>("servers").select().eq(`server_id`, message.guild.id).limit(1)
+        if (check_data?.length === 0) {
             let { data: c, error: d } = await supabase.from<Server>('servers').insert({
                 server_id: message.guild?.id
             })
         }
-        // ! Prefix
-        let PrefixArray: string[] = [...config.variables.prefix, [server_data[0].prefix]].flat(Infinity)
+        // ? Get Server Config
+        let { data: server_data, error: server_error } = await supabase.from<Server>("servers").select().eq(`server_id`, message.guild.id).limit(1)
 
+        // ! Prefix
+        let PrefixArray: string[] = [...config.variables.prefix, [(server_data[0].prefix ? server_data[0].prefix : [])]].flat(Infinity)
         console.log(`Prefixes for ${message.guild.name} | `, PrefixArray)
 
-
+        Shortlink(message.content, server_data[0].shortlinks)
 
     }
 }
