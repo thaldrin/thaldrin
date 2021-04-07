@@ -4,7 +4,7 @@ import Logger from "../utils/logger";
 import supabase from "../utils/database";
 import { Server, Usage } from "../utils/types";
 import config from "../../config";
-import Shortlink from "../utils/wrapper.features";
+import { Shortlink, SourceFinder } from "../utils/wrapper.features";
 
 export = {
     name: "message",
@@ -34,7 +34,7 @@ export = {
 
         // ? Check if Message includes shortlinks
         await Shortlink(message, server_data[0].shortlinks)
-
+        await SourceFinder(message, server_data[0].sourcefinder)
 
         // ! Prefix
         let PrefixArray: string[] = [...config.variables.prefix, [(server_data[0].prefix ? server_data[0].prefix : [])]].flat(Infinity)
