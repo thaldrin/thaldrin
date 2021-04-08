@@ -1,6 +1,3 @@
-import Language from "../../../lingua/index"
+import Language from "./lingua/index"
 
-
-export default {
-    "en_US": Language.en_US
-}
+export default Language

@@ -71,9 +71,9 @@ export = {
         if (ctx.isDeveloper) cmd.AuthorPermissions = "NONE"
 
         console.log(ctx.isDeveloper)
-        // if (cmd.nsfw && !ctx.channel.nsfw) return ctx.channel.send(
-        //     lingua["en_US"].CHANNEL_NOT_NSFW
-        // )
+        if (cmd.nsfw && !ctx.channel.nsfw) return ctx.channel.send(
+            lingua["en_US"].CHANNEL_NOT_NSFW
+        )
 
     }
 }
