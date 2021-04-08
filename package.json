@@ -6,7 +6,8 @@
   "scripts": {
     "build": "tsc",
     "start": "node build/index.js",
-    "dev": "rm -r build && npm run build && npm run start"
+    "dev": "rm -r build && npm run build && npm run start",
+    "update:subs": "git submodule update --remote"
   },
   "repository": {
     "type": "git",

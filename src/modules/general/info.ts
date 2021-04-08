@@ -8,7 +8,7 @@ export = class Info extends Command {
             aliases: ["about"],
             // module: "General",
             cooldown: 0,
-            guildOnly: false,
+            AuthorPermissions: ["MANAGE_GUILD"],
             dev: false
         })
     }

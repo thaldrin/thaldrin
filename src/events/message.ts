@@ -6,6 +6,7 @@ import { Server, Usage } from "../utils/types";
 import config from "../../config";
 import { Commands, Shortlink, SourceFinder } from "../utils/wrapper.features";
 import lingua from "../utils/lingua";
+import replace from "../utils/replace";
 
 export = {
     name: "message",
@@ -57,7 +58,6 @@ export = {
         const command = args.shift()?.toLowerCase()
 
         const cmd = client.commands.find((c) => (c.name as string).toLowerCase() == command || (c.aliases && c.aliases.includes(command)))
-        console.log(cmd)
         if (!cmd) return;
 
         if (!client.cooldowns.has(cmd.name)) {
@@ -65,15 +65,24 @@ export = {
         }
 
         const ctx = {
-            client, guild: message.guild, message, channel: message.channel, supabase, config, isDeveloper: config.developers.includes(message.author.id)
+            client,
+            guild: message.guild,
+            message, channel: message.channel,
+            author: message.author,
+            member: message.member,
+            supabase,
+            config,
+            isDeveloper: config.developers.find(dev => dev.id === message.author.id)
         }
+        // ! Override Command Restrictions if Message Author is on list of Developers
+        // if (ctx.isDeveloper) cmd.AuthorPermissions = "NONE"
 
-        if (ctx.isDeveloper) cmd.AuthorPermissions = "NONE"
-
-        console.log(ctx.isDeveloper)
+        // ! If Command is NSFW and channel is not marked as such, return
         if (cmd.nsfw && !ctx.channel.nsfw) return ctx.channel.send(
             lingua["en_US"].CHANNEL_NOT_NSFW
         )
+
+        if (cmd.AuthorPermissions !== "NONE" && ctx.member?.permissions.has(cmd.AuthorPermissions)) return ctx.channel.send(replace(/PERMISSIONS/gm, cmd.AuthorPermissions.join(", "), lingua["en_US"].INSUFFICIENT_PERMISSIONS))
 
     }
 }
