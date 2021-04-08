@@ -1,0 +1,3 @@
+[submodule "src/utils/lingua"]
+	path = src/utils/lingua
+	url = git@github.com:thaldrin/lingua.git
