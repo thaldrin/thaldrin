@@ -8,9 +8,9 @@ const sourcefinder = new Sourcefinder(`Thaldrin/v${config.pkg.version} (t8.pm/bo
 
 let SL = /(nosl|no-?short(link(s|ing)?)?)/gmi
 let SF = /(nosf|no-?source(find(er|ing)?)?)/gmi
+let CMD = /(nocmd|no-?command(s)?)/gmi
 
-
-function disabled(message: Message, feature: "sf" | "sl") {
+function disabled(message: Message, feature: "sf" | "sl" | "cmd") {
 
     switch (feature) {
         case 'sl':
@@ -19,6 +19,9 @@ function disabled(message: Message, feature: "sf" | "sl") {
         case 'sf':
             // @ts-ignore
             return SF.test((message.channel as TextChannel).topic)
+        case 'cmd':
+            // @ts-ignore
+            return CMD.test((message.channel as TextChannel).topic)
 
         default:
             throw new Error("No Feature was defined.")
@@ -43,4 +46,8 @@ export async function SourceFinder(message: Message, setting: boolean) {
     let sources = await sourcefinder.find(message.content)
     if (!sources) return;
     return message.channel.send(sources?.join('\n'))
+}
+
+export async function Commands(message: Message) {
+    return disabled(message, "cmd")
 }

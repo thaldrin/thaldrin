@@ -4,7 +4,7 @@ import Logger from "../utils/logger";
 import supabase from "../utils/database";
 import { Server, Usage } from "../utils/types";
 import config from "../../config";
-import { Shortlink, SourceFinder } from "../utils/wrapper.features";
+import { Commands, Shortlink, SourceFinder } from "../utils/wrapper.features";
 
 export = {
     name: "message",
@@ -32,9 +32,12 @@ export = {
         // ? Get Server Config
         let { data: server_data, error: server_error } = await supabase.from<Server>("servers").select().eq(`server_id`, message.guild.id).limit(1)
 
-        // ? Check if Message includes shortlinks
+        // ? Check if Message includes Shortlinks
         await Shortlink(message, server_data[0].shortlinks)
+        // ? Check if Message includes E621 Image Links
         await SourceFinder(message, server_data[0].sourcefinder)
+        // ? Check if Channel Topic allows Commands
+        if (await Commands(message)) return;
 
         // ! Prefix
         let PrefixArray: string[] = [...config.variables.prefix, [(server_data[0].prefix ? server_data[0].prefix : [])]].flat(Infinity)
