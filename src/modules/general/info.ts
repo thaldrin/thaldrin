@@ -1,3 +1,4 @@
+import { Context } from '../../utils/types';
 import Command from '../../handler/structures/Command';
 
 export = class Info extends Command {
@@ -13,7 +14,7 @@ export = class Info extends Command {
         })
     }
 
-    async command(ctx: any) {
+    async command(ctx: Context) {
         return console.log("Information Command")
     }
 }

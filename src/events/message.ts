@@ -71,6 +71,7 @@ export = {
             author: message.author,
             member: message.member,
             supabase,
+            guildSettings: server_data[0],
             config,
             isDeveloper: config.developers.find(dev => dev.id === message.author.id)
         }
@@ -79,7 +80,7 @@ export = {
 
         // ! If Command is NSFW and channel is not marked as such, return
         if (cmd.nsfw && !ctx.channel.nsfw) return ctx.channel.send(
-            lingua["en_US"].CHANNEL_NOT_NSFW
+            lingua[server_data[0].locale].CHANNEL_NOT_NSFW
         )
 
         if (cmd.AuthorPermissions !== "NONE" && ctx.member?.permissions.has(cmd.AuthorPermissions)) return ctx.channel.send(replace(/PERMISSIONS/gm, cmd.AuthorPermissions.join(", "), lingua["en_US"].INSUFFICIENT_PERMISSIONS))
