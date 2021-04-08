@@ -1,0 +1,34 @@
+[
+  {
+    "state": "server fans whirr",
+    "type": "LISTENING"
+  },
+  {
+    "state": "{GUILDAMOUNT} Servers",
+    "type": "LISTENING"
+  },
+  {
+    "state": "Portal",
+    "type": "PLAYING"
+  },
+  {
+    "state": "Portal 2",
+    "type": "LISTENING"
+  },
+  {
+    "state": "Half Life",
+    "type": "PLAYING"
+  },
+  {
+    "state": "Half Life 2",
+    "type": "LISTENING"
+  },
+  {
+    "state": "Skynet",
+    "type": "WATCHING"
+  },
+  {
+    "state": "Caecus",
+    "type": "LISTENING"
+  }
+]

@@ -42,7 +42,31 @@ export = {
         // ! Prefix
         let PrefixArray: string[] = [...config.variables.prefix, [(server_data[0].prefix ? server_data[0].prefix : [])]].flat(Infinity)
 
+        let Prefix: string
+        let Exists: boolean
+        for (const p in PrefixArray) {
+            if (message.content.startsWith(PrefixArray[p])) {
+                Prefix = p
+                Exists = true
+            }
+        }
+        // ! If Prefix doesn't exist in Message Content, return
+        if (!Exists) return;
+        const args = message.content.slice(PrefixArray[Prefix].length).trim().split(/ +/g)
+        const command = args.shift()?.toLowerCase()
 
+        const cmd = client.commands.find((c) => (c.name as string).toLowerCase() == command || (c.aliases && c.aliases.includes(command)))
+        console.log(cmd)
+        if (!cmd) return;
+
+        if (!client.cooldowns.has(cmd.name)) {
+            client.cooldowns.set(cmd.name, new Collection())
+        }
+
+
+        const ctx = {
+            client, guild: message.guild, message, supabase, config, isDeveloper: config.developers.includes(message.author.id)
+        }
 
     }
 }
