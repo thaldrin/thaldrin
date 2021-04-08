@@ -3,7 +3,7 @@ import Command from '../../handler/structures/Command';
 export = class Info extends Command {
     constructor() {
         super({
-            name: "Info",
+            name: "info",
             description: "Show Information about the Bot",
             aliases: ["about"],
             // module: "General",

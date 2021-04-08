@@ -3,7 +3,7 @@ import Command from "../../handler/structures/Command";
 export = class Eval extends Command {
     constructor() {
         super({
-            name: "Eval",
+            name: "eval",
             description: "Evaluate JS code directly from the process.",
             aliases: [
                 'ev',
