@@ -5,6 +5,7 @@ import supabase from "../utils/database";
 import { Server, Usage } from "../utils/types";
 import config from "../../config";
 import { Commands, Shortlink, SourceFinder } from "../utils/wrapper.features";
+import lingua from "../utils/lingua";
 
 export = {
     name: "message",
@@ -63,10 +64,16 @@ export = {
             client.cooldowns.set(cmd.name, new Collection())
         }
 
-
         const ctx = {
-            client, guild: message.guild, message, supabase, config, isDeveloper: config.developers.includes(message.author.id)
+            client, guild: message.guild, message, channel: message.channel, supabase, config, isDeveloper: config.developers.includes(message.author.id)
         }
+
+        if (ctx.isDeveloper) cmd.AuthorPermissions = "NONE"
+
+        console.log(ctx.isDeveloper)
+        // if (cmd.nsfw && !ctx.channel.nsfw) return ctx.channel.send(
+        //     lingua["en_US"].CHANNEL_NOT_NSFW
+        // )
 
     }
 }
