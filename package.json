@@ -1,6 +1,6 @@
 {
   "name": "thaldrin",
-  "version": "4.0.0",
+  "version": "4.0.0-dev",
   "description": "",
   "main": "build/index.js",
   "scripts": {
