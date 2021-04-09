@@ -24,14 +24,14 @@ export type Usage = {
 export type Command = {
     name: string;
     description: string;
-    aliases: string[];
-    module: string;
-    cooldown: number;
-    guild: boolean;
-    dev: boolean;
-    nsfw: boolean;
-    AuthorPermissions: string;
-    hidden: boolean;
+    aliases?: string[];
+    module?: string;
+    cooldown?: number;
+    guild?: boolean;
+    dev?: boolean;
+    nsfw?: boolean;
+    AuthorPermissions?: string | string[];
+    hidden?: boolean;
 }
 
 export type Context = {
