@@ -1,8 +1,8 @@
 // @ts-nocheck
-import { Client, Collection, Message } from "discord.js";
+import { Client, Collection, Message, MessageEmbed } from "discord.js";
 import Logger from "../utils/logger";
 import supabase from "../utils/database";
-import { Server, Usage } from "../utils/types";
+import { Command, Server, Usage } from "../utils/types";
 import config from "../../config";
 import { Commands, Shortlink, SourceFinder } from "../utils/wrapper.features";
 import lingua from "../utils/lingua";
@@ -57,7 +57,7 @@ export = {
         const args = message.content.slice(PrefixArray[Prefix].length).trim().split(/ +/g)
         const command = args.shift()?.toLowerCase()
 
-        const cmd = client.commands.find((c) => (c.name as string).toLowerCase() == command || (c.aliases && c.aliases.includes(command)))
+        const cmd: Command = client.commands.find((c) => (c.name as string).toLowerCase() == command || (c.aliases && c.aliases.includes(command)))
         if (!cmd) return;
 
         if (!client.cooldowns.has(cmd.name)) {
@@ -83,7 +83,34 @@ export = {
             lingua[server_data[0].locale].CHANNEL_NOT_NSFW
         )
 
-        if (cmd.AuthorPermissions !== "NONE" && ctx.member?.permissions.has(cmd.AuthorPermissions)) return ctx.channel.send(replace(/PERMISSIONS/gm, cmd.AuthorPermissions.join(", "), lingua["en_US"].INSUFFICIENT_PERMISSIONS))
+        if (cmd.AuthorPermissions !== "NONE" && ctx.member?.permissions.has(cmd.AuthorPermissions)) return ctx.channel.send(replace(/PERMISSIONS/gm, cmd.AuthorPermissions.join(", "), lingua[server_data[0].locale].INSUFFICIENT_PERMISSIONS))
+
+
+        const now = Date.now()
+        const timestamps = client.cooldowns.get(cmd.name)
+        const cooldown = (cmd.cooldown || 1) * 1000
+        if (timestamps.has(ctx.author.id)) {
+            const time = timestamps.get(ctx.author.id) + cooldown
+            if (now < time) {
+                let CooldownEmbed = new MessageEmbed()
+                const left = (time - now) / 1000
+                let title = replace(/COMMAND/g, cmd.name, lingua[server_data[0].locale].ON_COOLDOWN)
+                let description = replace(/COMMAND/g, cmd.name, replace(/COOLDOWN/g, `${cmd.cooldown}s`, replace(/TIME/g, left, lingua[server_data[0].locale].ON_COOLDOWN_DESCRIPTION)))
+                CooldownEmbed.setTitle(title)
+                    .setDescription(description)
+                    .setColor("ORANGE")
+                return ctx.channel.send(CooldownEmbed)
+            }
+        } else {
+            timestamps.set(ctx.author.id, now)
+            setTimeout(() => timestamps.delete(ctx.author.id), cooldown)
+            try {
+                await cmd.command(ctx)
+            } catch (error) {
+                let ErrorEmbed = new MessageEmbed().setTitle(replace(/COMMAND/g, cmd.name, lingua[server_data[0].locale].ON_ERROR)).setDescription(`\`${error.message}\`\n\n\`${error}\``).setColor("RED")
+                ctx.channel.send(ErrorEmbed)
+            }
+        }
 
     }
 }
