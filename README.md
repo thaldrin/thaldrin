@@ -1,11 +1,45 @@
-# Thaldrin
+# [Thaldrin](https://thaldr.in)
 
-Repo for Thaldrin v4, rewritten entirely based on his previous code.
+Repo for Thaldrin v4, rewritten entirely based on [his previous Version](https://werewolf.codes/t/thaldrin).
 
-# Authors
+# Requirements
 
-- Lio Young - _Owner/Developer_ - [@HimboLion](https://twitter.com/HimboLion)
+- Supabase
+- [yiff.rest] API Key
+- [sheri.bot] API Key
+
+Thaldrin uses Supabase as his Database backend. \
+His Image and Roleplay Commands are backed by the APIs provided by [Sheri] and [Furry Bot]
+
+# Run locally
+
+```sh
+git clone https://github.com/thaldrin/thaldrin.git
+cd thaldrin
+
+# Thaldrin uses Submodules for various things
+# you'll need to fetch those files
+npm run init
+npm run update:subs
+
+# Build him
+npm run build
+
+# Run
+npm run start
+
+```
+
+# Credits
+
+- Lio - **Developer** - [@HimboLion](https://kji.tf)
+- Thaldrin - **OC Owner** - [@ThalLycal](https://twitter.com/ThalLycal)
 
 # License
 
 **Thaldrin** is released under the [MIT](/LICENSE) License
+
+[yiff.rest]: (https://yiff.rest)
+[furry bot]: (https://yiff.rest)
+[sheri]: (https://sheri.bot)
+[sheri.bot]: (https://sheri.bot)
