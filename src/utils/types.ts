@@ -36,6 +36,7 @@ export type Command = {
 
 export type Context = {
     client: Client;
+    args: string[]
     guild: Guild | null;
     message: Message;
     channel: TextChannel | NewsChannel;
@@ -49,13 +50,29 @@ export type Context = {
 
 // ! Config Typings
 
-interface Config {
+export interface Config {
+    /**
+     * package.json import to autocompltete it's vars 
+     */
     pkg: Pkg;
+    /**
+    * variables.ts import
+    * Public Variables are defined in here. 
+    */
     variables: Variables;
+    /**
+     * API Keys for various APIs
+     */
     apis: Apis;
+    /**
+     * Discord API Token
+     */
     token: string;
+    /**
+     * Config Strings for Supabase
+     * Thaldrin's Database
+     */
     supabase: Supabase;
-    developers: Developer[];
 }
 
 interface Developer {
@@ -75,6 +92,10 @@ interface Apis {
 interface Variables {
     name: string;
     prefix: string[];
+    /**
+    * Developers of this Bot
+    */
+    developers: Developer[];
 }
 
 interface Pkg {
