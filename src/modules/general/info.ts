@@ -8,8 +8,8 @@ export = class Info extends Command {
             description: "Show Information about the Bot",
             aliases: ["about"],
             // module: "General",
-            cooldown: 0,
-            AuthorPermissions: ["MANAGE_GUILD"],
+            cooldown: 2,
+            // AuthorPermissions: ["MANAGE_GUILD"],
             dev: false
         })
     }

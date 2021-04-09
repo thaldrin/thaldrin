@@ -6,10 +6,7 @@ export = class Wolf extends Command {
             name: "wolf",
             description: "Show a Wolf",
             aliases: ["awoo"],
-            // module: "General",
             cooldown: 0,
-            guildOnly: false,
-            dev: false
         })
     }
 
