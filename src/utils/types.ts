@@ -77,6 +77,7 @@ export interface Config {
 
 interface Developer {
     id: string;
+    link: string
 }
 
 interface Supabase {
@@ -88,14 +89,28 @@ interface Apis {
     sheri: string;
     yiffrest: string;
 }
-
+interface Contributor {
+    id: string;
+    link: string
+    nick: string
+    reason: string
+}
 interface Variables {
-    name: string;
     prefix: string[];
-    /**
-    * Developers of this Bot
-    */
     developers: Developer[];
+    contributors: Contributor[]
+
+    // ! Mainly for the Info Command tbh
+    name: string;
+    source: string
+    avatar: string
+    tagline: string
+    color: string,
+    support: {
+        id: string,
+        invite: string
+    }
+    website: string
 }
 
 interface Pkg {
