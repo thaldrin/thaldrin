@@ -35,7 +35,7 @@ export default {
     /**
      * Name of the Bot 
      */
-    name: "Panthera",
+    name: "Thaldrin Beta",
     source: `[t8.pm/source](https://t8.pm/source)`,
     avatar: "https://thaldrin.media/avatar.png",
     support: {
