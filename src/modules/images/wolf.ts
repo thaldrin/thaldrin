@@ -1,4 +1,6 @@
+import yiff from '../../utils/yiff';
 import Command from '../../handler/structures/Command';
+import { Context } from '../../utils/types';
 
 export = class Wolf extends Command {
     constructor() {
@@ -10,7 +12,8 @@ export = class Wolf extends Command {
         })
     }
 
-    async command(ctx: any) {
-        return console.log("Wolf Command")
+    async command(ctx: Context) {
+        let image = await yiff.yiffy('animals', "wolf")
+        console.log(image)
     }
 }
