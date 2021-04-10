@@ -66,6 +66,7 @@ export = {
 
         const ctx = {
             client,
+            args,
             guild: message.guild,
             message, channel: message.channel,
             author: message.author,
@@ -73,7 +74,7 @@ export = {
             supabase,
             guildSettings: server_data[0],
             config,
-            isDeveloper: config.developers.find(dev => dev.id === message.author.id)
+            isDeveloper: config.variables.developers.find(dev => dev.id === message.author.id)
         }
         // ! Override Command Restrictions if Message Author is on list of Developers
         // if (ctx.isDeveloper) cmd.AuthorPermissions = "NONE"
@@ -106,7 +107,27 @@ export = {
             setTimeout(() => timestamps.delete(ctx.author.id), cooldown)
             try {
                 await cmd.command(ctx)
+
+                // ? Check if Comnand exists in DB
+                let { data: usage_check_data, error: usage_check_error } = await supabase.from<Usage>("usage").select().eq(`name`, cmd.name).limit(1)
+                if (usage_check_data?.length == 0) {
+                    let { data: c, error: d } = await supabase.from<Usage>('usage').insert({
+                        name: cmd.name,
+                        type: "command",
+                        // amount: 1
+                    })
+
+                }
+
+                let { data: command_usage_data, command_usage_error } = await supabase.from<Usage>('usage').update({ amount: (usage_check_data[0] || { amount: 0 }).amount + 1 }).select().eq("name", cmd.name)
+                Logger.info({
+                    type: "event:command",
+                    command: cmd.name,
+                    message: args.join(' ') || `${cmd.name} was executed`
+                })
             } catch (error) {
+                // Logger.error(error)
+                console.log(error)
                 let ErrorEmbed = new MessageEmbed().setTitle(replace(/COMMAND/g, cmd.name, lingua[server_data[0].locale].ON_ERROR)).setDescription(`\`${error.message}\`\n\n\`${error}\``).setColor("RED")
                 ctx.channel.send(ErrorEmbed)
             }
