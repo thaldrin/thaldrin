@@ -1,5 +1,6 @@
+import { Context } from "../../utils/types";
 import Command from "../../handler/structures/Command";
-
+import clean from "../../utils/clean"
 export = class Eval extends Command {
     constructor() {
         super({
@@ -15,16 +16,16 @@ export = class Eval extends Command {
         })
     }
 
-    async command(ctx: any) {
+    async command(ctx: Context) {
         let code = ctx.args.join(" ")
         try {
             let evaled = await eval(code)
             if (typeof evaled != 'string') {
                 evaled = (await import("util")).inspect(evaled, false, 1)
             }
-            return evaled
+            return ctx.channel.send(`\`\`\`js\n${clean(evaled)}\n\`\`\``)
         } catch (error) {
-
+            console.error(error)
         }
     }
 }
