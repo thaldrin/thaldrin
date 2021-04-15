@@ -7,7 +7,7 @@
     "build": "tsc",
     "start": "node build/index.js",
     "dev": "rm -r build && npm run build && npm run start",
-    "init": "git submodules init && git submodule update",
+    "init": "git submodule init && git submodule update",
     "update:subs": "git submodule update --remote"
   },
   "repository": {
