@@ -88,6 +88,7 @@ interface Supabase {
 interface Apis {
     sheri: string;
     yiffrest: string;
+    thaldrin: string;
 }
 interface Contributor {
     id: string;

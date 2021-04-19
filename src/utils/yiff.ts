@@ -5,7 +5,8 @@ let yiff = new Yiff({
     useragent: `${config.variables.name}/v${pkg.version} (t8.pm/bot)`,
     apikey: {
         sheri: config.apis.sheri,
-        yiffrest: config.apis.yiffrest
+        yiffrest: config.apis.yiffrest,
+        thaldrin: config.apis.thaldrin
     }
 })
 
