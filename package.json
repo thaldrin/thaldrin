@@ -6,7 +6,7 @@
   "scripts": {
     "build": "tsc",
     "start": "node build/index.js",
-    "dev": "rm -r build && npm run build && npm run start",
+    "dev": "npm run build && npm run start",
     "init": "git submodules init && git submodule update",
     "update:subs": "git submodule update --remote"
   },
@@ -28,7 +28,7 @@
     "discord.js": "^12.5.3",
     "winston": "^3.3.3",
     "winston-daily-rotate-file": "^4.5.1",
-    "yiff": "^3.0.6"
+    "yiff": "^3.1.0"
   },
   "devDependencies": {
     "@types/node": "^14.14.37",
