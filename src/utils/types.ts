@@ -43,7 +43,7 @@ export type Context = {
     author: User;
     member: GuildMember | null;
     supabase: SupabaseClient;
-    guildSettings: Server;
+    settings: Server;
     config: Config;
     isDeveloper: string[]
 }

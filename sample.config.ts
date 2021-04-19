@@ -8,7 +8,8 @@ export default <Config>{
     token: "",
     apis: {
         sheri: "",
-        yiffrest: ""
+        yiffrest: "",
+        thaldrin: ""
     },
     supabase: {
         url: "",
