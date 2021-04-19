@@ -72,7 +72,7 @@ export = {
             author: message.author,
             member: message.member,
             supabase,
-            guildSettings: server_data[0],
+            settings: server_data[0],
             config,
             isDeveloper: config.variables.developers.find(dev => dev.id === message.author.id)
         }
