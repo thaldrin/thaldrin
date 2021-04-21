@@ -25,6 +25,6 @@ export default class Command {
   }
 
   async run(ctx: Context) {
-    ctx.channel.send("This is the deafault Command, overwrite me.")
+    ctx.channel.send("This is the default command, overwrite me.")
   }
 };

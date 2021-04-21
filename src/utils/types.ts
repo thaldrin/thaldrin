@@ -121,8 +121,8 @@ interface Pkg {
     main: string;
     scripts: Scripts;
     repository: Repository;
-    keywords: any[];
-    author: string;
+    keywords?: any[];
+    author?: string;
     license: string;
     bugs: Bugs;
     homepage: string;
