@@ -1,6 +1,7 @@
 import { Client, Collection } from "discord.js";
 import { readdirSync as read } from "fs";
 import path from "path";
+import Logger from "../../utils/logger";
 // const server = require('../../website/server');
 
 export default class Thaldrin extends Client {
@@ -51,6 +52,11 @@ export default class Thaldrin extends Client {
 					const file = require(path.join(__dirname, '../../modules', module, command));
 					const Command = new file();
 					Command.module = module
+					Logger.info({
+						type: "command:loaded",
+						command: Command.name,
+						message: `${Command.name} was loaded`
+					})
 					this.commands.set(Command.name, Command);
 				} catch (err) {
 					console.error(err);

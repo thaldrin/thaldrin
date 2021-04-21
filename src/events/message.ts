@@ -7,6 +7,7 @@ import config from "../../config";
 import { Commands, Shortlink, SourceFinder } from "../utils/wrapper.features";
 import lingua from "../utils/lingua";
 import replace from "../utils/replace";
+import chalk from "chalk";
 
 export = {
     name: "message",
@@ -121,9 +122,9 @@ export = {
 
                 let { data: command_usage_data, command_usage_error } = await supabase.from<Usage>('usage').update({ amount: (usage_check_data[0] || { amount: 0 }).amount + 1 }).select().eq("name", cmd.name)
                 Logger.info({
-                    type: "event:command",
+                    type: "command:executed",
                     command: cmd.name,
-                    message: args.join(' ') || `${cmd.name} was executed`
+                    message: args.join(' ') || `${cmd.name} was executed in ${chalk.red('[')}${ctx.guild.name}${chalk.red(']')}(${ctx.guild?.id})`
                 })
             } catch (error) {
                 // Logger.error(error)

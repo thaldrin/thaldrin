@@ -1,9 +1,14 @@
+import Logger from "../utils/logger"
 import config from "../../config"
 
 export = {
     name: "ready",
+    // @ts-ignore
     run: async (client: any) => {
-        console.log(`${config.variables.name} has started.`)
+        Logger.info({
+            type: "event:ready",
+            message: `${config.variables.name} has started`
+        })
 
     }
 }
