@@ -3,30 +3,31 @@ import Command from '../../handler/structures/Command';
 import { Context } from '../../utils/types';
 import { MessageEmbed } from 'discord.js';
 
-export = class Wolf extends Command {
+export = class Birb extends Command {
     constructor() {
         super({
-            name: "wolf",
-            description: "Show a Wolf",
-            aliases: ["awoo"],
+            name: "birb",
+            description: "Show a Birb",
+            aliases: ["bird", 'birds'],
             cooldown: 1,
         })
     }
 
     async command(ctx: Context) {
-        let image = await yiff.thaldrin("wolves")
-        let provider = "thaldr.in"
-
+        let image = await yiff.shibe("birds", 1)
+        let provider = "shibe.online"
         if (ctx.settings.embeds) {
-            let Wolf = new MessageEmbed()
-                .setImage(image.url)
+            let Birb = new MessageEmbed()
+
+
+                .setImage(image[0])
                 .setFooter(`${ctx.config.variables.name} - Image provided by ${provider}`, ctx.config.variables.avatar)
                 .setColor(ctx.config.variables.color)
 
-            ctx.channel.send(Wolf)
+            ctx.channel.send(Birb)
         } else {
 
-            ctx.channel.send(image.url)
+            ctx.channel.send(image[0])
         }
     }
 }
