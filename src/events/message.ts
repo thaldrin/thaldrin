@@ -82,10 +82,10 @@ export = {
 
         // ! If Command is NSFW and channel is not marked as such, return
         if (cmd.nsfw && !ctx.channel.nsfw) return ctx.channel.send(
-            lingua[server_data[0].locale].CHANNEL_NOT_NSFW
+            lingua[ctx.settings.locale].CHANNEL_NOT_NSFW
         )
 
-        if (cmd.AuthorPermissions !== "NONE" && ctx.member?.permissions.has(cmd.AuthorPermissions)) return ctx.channel.send(replace(/PERMISSIONS/gm, cmd.AuthorPermissions.join(", "), lingua[server_data[0].locale].INSUFFICIENT_PERMISSIONS))
+        if (cmd.AuthorPermissions !== "NONE" && ctx.member?.permissions.has(cmd.AuthorPermissions)) return ctx.channel.send(replace(/PERMISSIONS/gm, cmd.AuthorPermissions.join(", "), lingua[ctx.settings.locale].INSUFFICIENT_PERMISSIONS))
 
 
         const now = Date.now()
@@ -96,8 +96,8 @@ export = {
             if (now < time) {
                 let CooldownEmbed = new MessageEmbed()
                 const left = (time - now) / 1000
-                let title = replace(/COMMAND/g, cmd.name, lingua[server_data[0].locale].ON_COOLDOWN)
-                let description = replace(/COMMAND/g, cmd.name, replace(/COOLDOWN/g, `${cmd.cooldown}s`, replace(/TIME/g, left, lingua[server_data[0].locale].ON_COOLDOWN_DESCRIPTION)))
+                let title = replace(/COMMAND/g, cmd.name, lingua[ctx.settings.locale].ON_COOLDOWN)
+                let description = replace(/COMMAND/g, cmd.name, replace(/COOLDOWN/g, `${cmd.cooldown}s`, replace(/TIME/g, left, lingua[ctx.settings.locale].ON_COOLDOWN_DESCRIPTION)))
                 CooldownEmbed.setTitle(title)
                     .setDescription(description)
                     .setColor("ORANGE")
@@ -129,7 +129,7 @@ export = {
             } catch (error) {
                 // Logger.error(error)
                 console.log(error)
-                let ErrorEmbed = new MessageEmbed().setTitle(replace(/COMMAND/g, cmd.name, lingua[server_data[0].locale].ON_ERROR)).setDescription(`\`${error.message}\`\n\n\`${error}\``).setColor("RED")
+                let ErrorEmbed = new MessageEmbed().setTitle(replace(/COMMAND/g, cmd.name, lingua[ctx.settings.locale].ON_ERROR)).setDescription(`\`${error.message}\`\n\n\`${error}\``).setColor("RED")
                 ctx.channel.send(ErrorEmbed)
             }
         }
