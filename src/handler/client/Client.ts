@@ -52,11 +52,11 @@ export default class Thaldrin extends Client {
 					const file = require(path.join(__dirname, '../../modules', module, command));
 					const Command = new file();
 					Command.module = module
-					Logger.info({
-						type: "command:loaded",
-						command: Command.name,
-						message: `${Command.name} was loaded`
-					})
+					// Logger.info({
+					// 	type: "command:loaded",
+					// 	command: Command.name,
+					// 	message: `${Command.name} was loaded`
+					// })
 					this.commands.set(Command.name, Command);
 				} catch (err) {
 					console.error(err);
