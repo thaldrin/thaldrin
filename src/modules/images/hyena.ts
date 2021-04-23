@@ -22,7 +22,6 @@ export = class Hyena extends Command {
                 .setImage(image.url)
                 .setFooter(`${ctx.config.variables.name} - Image provided by ${provider}`, ctx.config.variables.avatar)
                 .setColor(ctx.config.variables.color)
-
             ctx.channel.send(Hyena)
         } else {
 

@@ -18,8 +18,6 @@ export = class Birb extends Command {
         let provider = "shibe.online"
         if (ctx.settings.embeds) {
             let Birb = new MessageEmbed()
-
-
                 .setImage(image[0])
                 .setFooter(`${ctx.config.variables.name} - Image provided by ${provider}`, ctx.config.variables.avatar)
                 .setColor(ctx.config.variables.color)

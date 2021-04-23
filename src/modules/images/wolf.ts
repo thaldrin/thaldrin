@@ -16,7 +16,6 @@ export = class Wolf extends Command {
     async command(ctx: Context) {
         let image = await yiff.thaldrin("wolves")
         let provider = "thaldr.in"
-
         if (ctx.settings.embeds) {
             let Wolf = new MessageEmbed()
                 .setImage(image.url)

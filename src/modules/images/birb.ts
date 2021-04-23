@@ -17,8 +17,6 @@ export = class Cat extends Command {
         let provider = "shibe.online"
         if (ctx.settings.embeds) {
             let Cat = new MessageEmbed()
-
-
                 .setImage(image[0])
                 .setFooter(`${ctx.config.variables.name} - Image provided by ${provider}`, ctx.config.variables.avatar)
                 .setColor(ctx.config.variables.color)
