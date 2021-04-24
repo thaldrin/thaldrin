@@ -28,7 +28,7 @@ export default {
         {
             id: "356323373443448843",
             link: "https://twitter.com/ThalLycal",
-            nick: "Thaldrin",
+            nick: "Zuroth",
             reason: "Letting me use his Sona as a Mascot. <:lioLove:760165648063397942> "
         },
     ],
