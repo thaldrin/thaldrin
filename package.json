@@ -7,8 +7,9 @@
     "build": "tsc",
     "start": "node build/index.js",
     "dev": "npm run build && npm run start",
-    "init": "git submodules init && git submodule update",
-    "update:subs": "git submodule update --remote"
+    "init": "npm run subs:init && npm run sub:update",
+    "subs:init": "git submodules init && git submodule update",
+    "subs:update": "git submodule update --remote"
   },
   "repository": {
     "type": "git",
@@ -26,6 +27,7 @@
     "@thaldrin/sourcefinder": "^1.0.3",
     "chalk": "^4.1.0",
     "discord.js": "^12.5.3",
+    "trello-helper": "^3.0.7",
     "winston": "^3.3.3",
     "winston-daily-rotate-file": "^4.5.1",
     "yiff": "^3.1.1"
