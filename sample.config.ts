@@ -14,5 +14,18 @@ export default <Config>{
     supabase: {
         url: "",
         key: ""
+    },
+
+    trello: {
+        key: "",
+        token: "",
+        board: "",
+        options: {
+            list: {
+                bugs: "",
+                suggestions: ""
+            }
+        }
     }
+
 }

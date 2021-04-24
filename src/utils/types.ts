@@ -73,30 +73,79 @@ export interface Config {
      * Thaldrin's Database
      */
     supabase: Supabase;
+    /**
+     * Webhooks
+     */
+    webhook?: Webhooks
+    /**
+     * Config Vars for [trello-helper](https://npm.im/trello-helper)
+     */
+    trello: Trello
+}
+export interface Webhooks {
+    /**
+     * Name of the Webhook
+     */
+    [v: string]: Webhook,
+}
+export interface Webhook {
+
+    /**
+     * Webhook ID
+     */
+    id: string,
+    /**
+     * Webhook Username
+     */
+    username: string
+    /**
+     * Webhook Type
+     */
+    type: string
+    /**
+     * Webhook Token
+     */
+    token: string
+
+}
+export interface Trello {
+    key: string
+    token: string
+    board: string,
+    options: {
+        list: {
+            bugs: string
+            suggestions: string
+        }
+        // label: {
+        //     bugs: string
+        //     suggestions: string
+        // }
+    }
 }
 
-interface Developer {
+export interface Developer {
     id: string;
     link: string
 }
 
-interface Supabase {
+export interface Supabase {
     url: string;
     key: string;
 }
 
-interface Apis {
+export interface Apis {
     sheri: string;
     yiffrest: string;
     thaldrin: string;
 }
-interface Contributor {
+export interface Contributor {
     id: string;
     link: string
     nick: string
     reason: string
 }
-interface Variables {
+export interface Variables {
     prefix: string[];
     developers: Developer[];
     contributors: Contributor[]
@@ -114,7 +163,7 @@ interface Variables {
     website: string
 }
 
-interface Pkg {
+export interface Pkg {
     name: string;
     version: string;
     description: string;
@@ -158,5 +207,7 @@ interface Scripts {
     build: string;
     start: string;
     dev: string;
-    'update:subs': string;
+    init: string;
+    "subs:init": string;
+    "subs:update": string;
 }
