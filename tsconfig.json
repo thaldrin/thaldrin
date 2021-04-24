@@ -22,5 +22,13 @@
     "declaration": true
   },
   "include": ["**/*"],
-  "exclude": ["node_modules", "build", "out", "tmp", "logs", "test"]
+  "exclude": [
+    "node_modules",
+    "build",
+    "out",
+    "tmp",
+    "logs",
+    "test",
+    "sample.config.ts"
+  ]
 }
