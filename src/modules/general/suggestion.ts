@@ -4,7 +4,7 @@ import { Context } from '../../utils/types';
 import SendWS from "../../utils/webhook";
 import lingua from '../../utils/lingua';
 import { suggest } from '../../utils/trello';
-export = class Fox extends Command {
+export = class Suggestion extends Command {
     constructor() {
         super({
             name: "suggest",

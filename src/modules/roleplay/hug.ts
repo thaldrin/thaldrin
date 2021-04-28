@@ -5,7 +5,7 @@ import { MessageEmbed } from 'discord.js';
 import lingua from './../../utils/lingua';
 import replace from './../../utils/replace';
 
-export = class Fox extends Command {
+export = class Hug extends Command {
     constructor() {
         super({
             name: "hug",
