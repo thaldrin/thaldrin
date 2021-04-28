@@ -9,11 +9,11 @@ export default class Thaldrin extends Client {
 	cooldowns: Collection<unknown, unknown>;
 	config: any;
 	lastEval: any;
-	constructor(config: { token: any; }, shards: number) {
+	constructor(config: { token: any; }) {
 		super({
 			// disableEveryone: true,
-			// disabledEvents: ['TYnpm i --save-dev @types/wsPING_START'],
-			shardCount: shards,
+			// disabledEvents: ['TYPING_START'],
+			// shardCount: shards,
 			// totalShardCount: shards
 		});
 
