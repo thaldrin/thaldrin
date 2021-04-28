@@ -1,4 +1,3 @@
-import yiff from '../../utils/yiff';
 import Command from '../../handler/structures/Command';
 import { Context } from '../../utils/types';
 import SendWS from "../../utils/webhook";
