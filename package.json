@@ -2,10 +2,10 @@
   "name": "thaldrin",
   "version": "4.0.0-dev",
   "description": "",
-  "main": "build/index.js",
+  "main": "build/shard.js",
   "scripts": {
     "build": "tsc",
-    "start": "node build/index.js",
+    "start": "node build/shard.js",
     "dev": "npm run build && npm run start",
     "init": "npm run subs:init && npm run sub:update",
     "subs:init": "git submodules init && git submodule update",
