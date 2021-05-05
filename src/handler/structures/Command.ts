@@ -11,6 +11,7 @@ export default class Command {
   nsfw: boolean;
   AuthorPermissions: string | string[];
   hidden: boolean;
+  usage: string
   constructor(command: CommandContext) {
     this.name = command.name || "";
     this.description = command.description || "";
@@ -22,6 +23,7 @@ export default class Command {
     this.nsfw = command.nsfw || false;
     this.AuthorPermissions = command.AuthorPermissions || "NONE";
     this.hidden = command.hidden || false;
+    this.usage = command.usage || ''
   }
 
   async run(ctx: Context) {

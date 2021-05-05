@@ -32,6 +32,7 @@ export type Command = {
     nsfw?: boolean;
     AuthorPermissions?: string | string[];
     hidden?: boolean;
+    usage?: string
 }
 
 
