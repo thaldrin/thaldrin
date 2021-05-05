@@ -1,6 +1,6 @@
 import { SupabaseClient } from "@supabase/supabase-js";
 import { Client, Guild, GuildMember, Message, NewsChannel, TextChannel, User } from "discord.js";
-
+import Thaldrin from "../handler/client/Client";
 export type Server = {
     readonly id: string
     server_id: string
@@ -34,8 +34,9 @@ export type Command = {
     hidden?: boolean;
 }
 
+
 export type Context = {
-    client: Client;
+    client: Thaldrin;
     args: string[]
     guild: Guild | null;
     message: Message;
@@ -161,6 +162,7 @@ export interface Variables {
         invite: string
     }
     website: string
+    invite: any;
 }
 
 export interface Pkg {

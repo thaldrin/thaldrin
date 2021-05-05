@@ -1,11 +1,12 @@
 import { Client, Collection } from "discord.js";
 import { readdirSync as read } from "fs";
 import path from "path";
+import { Command } from "../../utils/types";
 import Logger from "../../utils/logger";
 // const server = require('../../website/server');
 
 export default class Thaldrin extends Client {
-	commands: Collection<unknown, unknown>;
+	commands: Collection<string, Command>;
 	cooldowns: Collection<unknown, unknown>;
 	config: any;
 	lastEval: any;
