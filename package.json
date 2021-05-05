@@ -7,8 +7,8 @@
     "build": "tsc",
     "start": "node build/shard.js",
     "dev": "npm run build && npm run start",
-    "init": "npm run subs:init && npm run sub:update",
-    "subs:init": "git submodules init && git submodule update",
+    "init": "npm run subs:init && npm run subs:update",
+    "subs:init": "git submodule init && git submodule update",
     "subs:update": "git submodule update --remote"
   },
   "repository": {
