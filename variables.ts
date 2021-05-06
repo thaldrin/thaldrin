@@ -2,7 +2,7 @@ export default {
     /**
      * Default Prefixes 
      */
-    prefix: ['thal', "<@434662676547764244>", "<@!434662676547764244>"],
+    prefix: ["<@434662676547764244>", "<@!434662676547764244>", 'thal'],
     /**
      * Developers of the Bot
      */
@@ -11,7 +11,8 @@ export default {
             /**
              * Discord ID of the Developer
              */
-            id: "318044130796109825", // Lio
+            // id: "318044130796109825", // Lio
+            id: "3180441307961098255", // Lio
             link: "https://kji.tf/twitter"
         }
     ],

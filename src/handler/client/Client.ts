@@ -56,7 +56,7 @@ export default class Thaldrin extends Client {
 					// Logger.info({
 					// 	type: "command:loaded",
 					// 	command: Command.name,
-					// 	message: `${Command.name} was loaded`
+					// 	message: `${Command.name}:${Command.module} was loaded`
 					// })
 					this.commands.set(Command.name, Command);
 				} catch (err) {
