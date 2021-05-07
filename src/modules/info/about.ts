@@ -6,9 +6,8 @@ import config from '../../../config';
 export = class Info extends Command {
     constructor() {
         super({
-            name: "info",
+            name: "about",
             description: "Show Information about the Bot",
-            aliases: ["about"],
             cooldown: 0
         })
     }

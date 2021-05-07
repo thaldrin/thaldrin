@@ -1,7 +1,7 @@
 import Command from '../../handler/structures/Command';
 import { Context, Usage } from '../../utils/types';
 import lingua from '../../utils/lingua';
-import embed from '../../utils/embed';
+import { MessageEmbed } from 'discord.js';
 import CommandUsage from '../../utils/command.usage';
 
 export = class Stats extends Command {

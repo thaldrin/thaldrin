@@ -1,7 +1,6 @@
 import Command from '../../handler/structures/Command';
 import { Context } from '../../utils/types';
 import lingua from '../../utils/lingua';
-import embed from '../../utils/embed';
 import replace from '../../utils/replace';
 
 export = class Invite extends Command {

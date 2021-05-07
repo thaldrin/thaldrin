@@ -2,7 +2,6 @@ import yiff from "../../utils/yiff"
 import Command from "../../handler/structures/Command"
 import { Context } from "../../utils/types";
 import { MessageEmbed } from "discord.js"
-import embed from "../../utils/embed";
 import lingua from "../../utils/lingua";
 export = class E926 extends Command {
     constructor() {
@@ -16,6 +15,7 @@ export = class E926 extends Command {
     }
 
     async command(ctx: Context) {
+        let embed = new MessageEmbed().setColor(ctx.config.variables.color).setFooter(`${ctx.config.variables.name}`, ctx.config.variables.avatar)
         // @ts-ignore
         if (ctx.args.length < 1) return ctx.channel.send(embed.setTitle(lingua[ctx.settings.locale].NOT_ENOUGH_TAGS).setDescription(lingua[ctx.settings.locale].NOT_ENOUGH_TAGS_DES))
         let request = await yiff.e926(ctx.args.join(" "))

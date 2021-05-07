@@ -4,9 +4,9 @@
   "description": "",
   "main": "build/shard.js",
   "scripts": {
-    "build": "tsc",
+    "build": "rm -rf build/ && tsc",
     "start": "node build/shard.js",
-    "dev": "nodemon --ignore \"./build\" -e js,ts --exec \"npm run build && npm run start\"",
+    "dev": "nodemon --ignore \"build/\" -e js,ts --exec \"npm run build && npm run start\"",
     "init": "npm run subs:init && npm run subs:update",
     "subs:init": "git submodule init && git submodule update",
     "subs:update": "git submodule update --remote"

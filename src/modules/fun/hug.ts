@@ -2,8 +2,8 @@ import yiff from '../../utils/yiff';
 import Command from '../../handler/structures/Command';
 import { Context } from '../../utils/types';
 import { MessageEmbed } from 'discord.js';
-import lingua from './../../utils/lingua';
-import replace from './../../utils/replace';
+import lingua from '../../utils/lingua';
+import replace from '../../utils/replace';
 
 export = class Hug extends Command {
     constructor() {
