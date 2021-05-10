@@ -25,19 +25,31 @@ export = class Help extends Command {
                 // @ts-ignore
                 return embed.addField(`${lingua[ctx.settings.locale].CATEGORIES[folder.toUpperCase()].name || folder} [\`${[...(await Commands(folder, ctx.client))].length}\`]`, `\`${ctx.config.variables.prefix[2]} help ${folder}\``, true)
             })
-            embed.setTitle("Help")
+            embed.setTitle(`${ctx.config.variables.name} Help`)
             return ctx.channel.send(embed)
         }
         let arg = ctx.args[0]
         if (await (await Folders()).includes(arg)) {
-
+            if (arg === 'developer') return
             let commands = await (await Commands(arg, ctx.client)).map(command => `\`${command.name}\` - ${command.description}`)
             embed.addField("Commands", commands.join("\n"))
             // @ts-ignore
             embed.setTitle(`${lingua[ctx.settings.locale].CATEGORIES[arg.toUpperCase()].name || arg}`)
+            // @ts-ignore
+            embed.setDescription(`${lingua[ctx.settings.locale].CATEGORIES[arg.toUpperCase()].desc || ""}\n\nTotal Commands: **${commands.length}**`)
             return ctx.channel.send(embed)
         }
-
+        // @ts-ignore
+        let command = ctx.client.commands.find((c) => c.name.toLowerCase() == arg || (c.aliases && c.aliases.includes(arg)))
+        // let aliases = ctx.client.commands.filter()
+        if (command) {
+            embed.setTitle("Command Help")
+            if (command.aliases?.length !== 0) embed.addField("Aliases", `⇒\`${command.aliases?.join("`\n⇒`")}\``, true)
+            // @ts-ignore
+            embed.setDescription(`**Cooldown:** ${command.cooldown}s\n**Module:** ${lingua[ctx.settings.locale].CATEGORIES[command.module.toUpperCase()].name || command.module}\n**NSFW:** ${command.nsfw}`)
+            embed.addField("Usage", `\`thal ${command.name}\` ${command.usage}`, true)
+            ctx.channel.send(embed)
+        }
 
     }
 }

@@ -13,11 +13,11 @@ export default class Command {
   hidden: boolean;
   usage: string
   constructor(command: CommandContext) {
-    this.name = command.name || "";
-    this.description = command.description || "";
+    this.name = command.name || "generic";
+    this.description = command.description || "generic command base";
     this.aliases = command.aliases || [];
     this.module = command.module || "";
-    this.cooldown = command.cooldown || 0;
+    this.cooldown = command.cooldown || 1;
     this.guild = command.guild || false;
     this.dev = command.dev || false;
     this.nsfw = command.nsfw || false;

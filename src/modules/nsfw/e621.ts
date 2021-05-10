@@ -9,7 +9,8 @@ export = class E621 extends Command {
             name: "e621",
             description: "Get an Image from E621",
             aliases: ['e6', 'esix'],
-            cooldown: 2
+            cooldown: 2,
+            nsfw: true
         })
     }
 

@@ -11,8 +11,8 @@ export default {
             /**
              * Discord ID of the Developer
              */
-            // id: "318044130796109825", // Lio
-            id: "3180441307961098255", // Lio
+            id: "318044130796109825", // Lio
+            // id: "3180441307961098255", // Lio
             link: "https://kji.tf/twitter"
         }
     ],
