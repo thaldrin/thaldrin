@@ -15,4 +15,4 @@ RUN tsc --sourceMap false
 RUN rm -rf src
 RUN npm cache clean --force
 
-ENTRYPOINT [ "npm", "run" "start"]
+ENTRYPOINT [ "npm", "run", "start"]

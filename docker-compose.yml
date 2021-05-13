@@ -6,16 +6,20 @@ services:
     restart: always
     networks:
       - lantern
-    volumes:
-      - ./config.ts:/opt/thaldrin/config.ts
+    ports:
+      - 9090:9090
   bot:
     container_name: thaldrin
     restart: always
     build: .
+    ports:
+      - 3621:3621
     depends_on:
       - prometheus
+    volumes:
+      - ./config.ts:/opt/thaldrin/config.ts
     networks:
       - lantern
+      - default
 networks:
   lantern:
-    internal: true

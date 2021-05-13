@@ -46,5 +46,8 @@ export default {
     tagline: "A Random Image and Utility Bot",
     color: "#ff995d",
     website: "thaldr.in",
-    invite: "https://t8.pm/legacy-invite"
+    invite: "https://t8.pm/legacy-invite",
+    prometheus: {
+        port: 3621
+    }
 }

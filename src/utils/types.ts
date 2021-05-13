@@ -164,6 +164,9 @@ export interface Variables {
     }
     website: string
     invite: any;
+    prometheus: {
+        port: number
+    }
 }
 
 export interface Pkg {

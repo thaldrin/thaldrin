@@ -8,10 +8,13 @@ import { Commands, Shortlink, SourceFinder } from "../utils/wrapper.features";
 import lingua from "../utils/lingua";
 import replace from "../utils/replace";
 import chalk from "chalk";
+import Prom from "../utils/init.prometheus";
+
 
 export = {
     name: "message",
     run: async (client: Client, message: Message) => {
+        Prom.messagesSeen.inc()
         if (message.author.bot) return
         if (message.channel.type === "dm") return
 
