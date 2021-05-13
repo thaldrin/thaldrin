@@ -1,0 +1,20 @@
+{
+  "WHITE_SMALL_SQUARE": ":white_small_square:",
+  "FLAGS": {
+    "DISCORD_EMPLOYEE": "<:thaldrinStaffDiscord:841373486982758431>",
+    "PARTNERED_SERVER_OWNER": "<:thaldrinPartnerDiscord:841373738519625799>",
+    "DISCORD_PARTNER": "<:thaldrinPartnerDiscord:841373738519625799>",
+    "HYPESQUAD_EVENTS": "<:thaldrinHypesquad:841373586103336990>",
+    "BUGHUNTER_LEVEL_1": "<:thaldrinBugHunter:841373410277457960>",
+    "HOUSE_BRAVERY": "<:thaldrinBraveryDiscord:841373001663643690>",
+    "HOUSE_BRILLIANCE": "<:thaldrinBrillianceDiscord:841373251233906708>",
+    "HOUSE_BALANCE": "<:thaldrinBalanceDiscord:841373146724040715>",
+    "EARLY_SUPPORTER": "<:thaldrinEarlySupporterDiscord:841372877584072774>",
+    "TEAM_USER": "",
+    "SYSTEM": "",
+    "BUGHUNTER_LEVEL_2": "<:thaldrinBugHunter2Discord:841377828469866536>",
+    "VERIFIED_BOT": "<:thaldrinVerifiedBotDiscord:841377445537513542>",
+    "EARLY_VERIFIED_BOT_DEVELOPER": "<:thaldrinVerifiedDevDiscord:841372708868063282>",
+    "VERIFIED_DEVELOPER": ""
+  }
+}

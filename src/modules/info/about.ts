@@ -35,7 +35,8 @@ export = class Info extends Command {
         }
         let InfoEmbed = new MessageEmbed()
             .setDescription(`
-            Made by ${devs}`)
+            Made by ${devs}\n
+            A [Caecus](https://werewolf.design) Project\n[Consider supporting the Development of this Bot](https://lio.cat/support)`)
             .addField("Contributors", `${contribs}`, false)
             .addField("Source", config.variables.source, true)
             .addField("Support Server", `[${ctx.client.guilds.cache.get(ctx.config.variables.support.id)?.name}](${ctx.config.variables.support.invite})`, true)

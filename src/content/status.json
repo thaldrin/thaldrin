@@ -4,7 +4,7 @@
     "type": "LISTENING"
   },
   {
-    "state": "{GUILDAMOUNT} Servers",
+    "state": "GUILDS Servers",
     "type": "LISTENING"
   },
   {
@@ -28,7 +28,7 @@
     "type": "WATCHING"
   },
   {
-    "state": "Caecus",
-    "type": "LISTENING"
+    "state": "Caecus fight",
+    "type": "WATCHING"
   }
 ]
