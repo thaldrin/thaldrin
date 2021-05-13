@@ -1,0 +1,21 @@
+version: "3.8"
+services:
+  prometheus:
+    container_name: prometheus
+    build: ./lantern/prometheus
+    restart: always
+    networks:
+      - lantern
+    volumes:
+      - ./config.ts:/opt/thaldrin/config.ts
+  bot:
+    container_name: thaldrin
+    restart: always
+    build: .
+    depends_on:
+      - prometheus
+    networks:
+      - lantern
+networks:
+  lantern:
+    internal: true
