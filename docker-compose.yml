@@ -8,9 +8,25 @@ services:
       - lantern
     ports:
       - 9090:9090
+    volumes:
+      - prometheus:/var/lib/prometheus
+  grafana:
+    container_name: grafana
+    image: grafana/grafana
+    restart: always
+    depends_on:
+      - prometheus
+      - bot
+    ports:
+      - 3000:3000
+    networks:
+      - lantern
+    volumes:
+      - grafana:/var/lib/grafana
   bot:
     container_name: thaldrin
     restart: always
+    hostname: thaldrin
     build: .
     ports:
       - 3621:3621
@@ -23,3 +39,6 @@ services:
       - default
 networks:
   lantern:
+volumes:
+  grafana:
+  prometheus:
