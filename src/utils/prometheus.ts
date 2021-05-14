@@ -1,7 +1,4 @@
 //! Code taken from NinoDiscord/Nino
-
-
-
 import prom from "prom-client"
 import { createServer, IncomingMessage, ServerResponse } from 'http'
 import vars from "../../variables"
@@ -10,7 +7,8 @@ import Logger from "./logger"
 export default class Prometheus {
     public commandsExecuted!: prom.Counter<string>
     public messagesSeen!: prom.Counter<string>
-    public guildCount!: prom.Counter<string>
+    public guildCount!: prom.Gauge<string>
+    public totalGuilds!: prom.Gauge<string>
     // public commmandsRan: prom.Counter<string>
     #server!: ReturnType<typeof createServer>
 
@@ -28,9 +26,12 @@ export default class Prometheus {
         })
         this.guildCount = new prom.Gauge({
             name: "thaldrin_guild_count",
-            help: "Number of Guilds Thaldrin is in"
+            help: "Number of Guilds Thaldrin joined this Lifecycle"
         })
-
+        this.totalGuilds = new prom.Gauge({
+            name: "thaldrin_guilds_total",
+            help: "Total Number of Guilds Thaldrin is in"
+        })
 
         this.#server = createServer(this.onRequest.bind(this));
         this.#server.once('listening', () => Logger.info(`Prometheus: Listening at http://localhost:${vars.prometheus.port}`));

@@ -123,6 +123,7 @@ export = {
 
                 }
 
+                Prom.commandsExecuted.inc()
                 let { data: command_usage_data, command_usage_error } = await supabase.from<Usage>('usage').update({ amount: (usage_check_data[0] || { amount: 0 }).amount + 1 }).select().eq("name", cmd.name)
                 Logger.info({
                     type: "command:executed",
