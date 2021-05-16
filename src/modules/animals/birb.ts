@@ -2,6 +2,7 @@ import yiff from '../../utils/yiff';
 import Command from '../../handler/structures/Command';
 import { Context } from '../../utils/types';
 import { MessageEmbed } from 'discord.js';
+import request from '../../utils/animals';
 
 export = class Birb extends Command {
     constructor() {
@@ -14,8 +15,7 @@ export = class Birb extends Command {
     }
 
     async command(ctx: Context) {
-        let image = await yiff.shibe("birds", 1)
-        let provider = "shibe.online"
+        let { image, provider } = await request('bird')
         if (ctx.settings.embeds) {
             let Cat = new MessageEmbed()
                 .setImage(image[0])

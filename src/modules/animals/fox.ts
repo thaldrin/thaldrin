@@ -2,6 +2,7 @@ import yiff from '../../utils/yiff';
 import Command from '../../handler/structures/Command';
 import { Context } from '../../utils/types';
 import { MessageEmbed } from 'discord.js';
+import request from '../../utils/animals';
 
 export = class Fox extends Command {
     constructor() {
@@ -14,8 +15,8 @@ export = class Fox extends Command {
     }
 
     async command(ctx: Context) {
-        let image = await yiff.thaldrin("foxes")
-        let provider = "thaldr.in"
+        let { image, provider } = await request('fox')
+
 
         if (ctx.settings.embeds) {
             let Fox = new MessageEmbed()
