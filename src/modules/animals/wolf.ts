@@ -9,7 +9,7 @@ export = class Wolf extends Command {
             name: "wolf",
             description: "Show a Wolf",
             aliases: ["awoo"],
-            cooldown: 1,
+            cooldown: 2,
         })
     }
 

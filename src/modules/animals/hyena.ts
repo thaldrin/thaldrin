@@ -9,7 +9,7 @@ export = class Hyena extends Command {
             name: "hyena",
             description: "Show a Hyena",
             aliases: ["yeen"],
-            cooldown: 1,
+            cooldown: 2,
         })
     }
 

@@ -9,7 +9,7 @@ export = class Birb extends Command {
             name: "birb",
             description: "Show a Birb",
             aliases: ["bird", 'birds'],
-            cooldown: 1,
+            cooldown: 2,
         })
     }
 

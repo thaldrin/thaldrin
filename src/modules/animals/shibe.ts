@@ -9,7 +9,7 @@ export = class Shibe extends Command {
             name: "shibe",
             description: "Show a Shibe",
             aliases: ["shib"],
-            cooldown: 1,
+            cooldown: 2,
         })
     }
 
