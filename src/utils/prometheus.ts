@@ -34,7 +34,7 @@ export default class Prometheus {
         })
 
         this.#server = createServer(this.onRequest.bind(this));
-        this.#server.once('listening', () => Logger.info(`Prometheus: Listening at http://localhost:${vars.prometheus.port}`));
+        this.#server.once('listening', () => Logger.info({ type: 'event:prometheusStart', message: `Prometheus: Listening at http://localhost:${vars.prometheus.port}` }));
         this.#server.on('error', error => console.error(error));
         this.#server.listen(vars.prometheus.port);
     }
