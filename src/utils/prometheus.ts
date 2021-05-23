@@ -9,6 +9,7 @@ export default class Prometheus {
     public messagesSeen!: prom.Counter<string>
     public guildCount!: prom.Gauge<string>
     public totalGuilds!: prom.Gauge<string>
+    public uptime!: prom.Gauge<string>
     // public commmandsRan: prom.Counter<string>
     #server!: ReturnType<typeof createServer>
 
@@ -32,6 +33,10 @@ export default class Prometheus {
             name: "thaldrin_guilds_total",
             help: "Total Number of Guilds Thaldrin is in"
         })
+        this.uptime = new prom.Gauge({
+            name: "thaldrin_uptime",
+            help: "Thaldrin's Uptime"
+        })
 
         this.#server = createServer(this.onRequest.bind(this));
         this.#server.once('listening', () => Logger.info({ type: 'event:prometheusStart', message: `Prometheus: Listening at http://localhost:${vars.prometheus.port}` }));
@@ -39,6 +44,7 @@ export default class Prometheus {
         this.#server.listen(vars.prometheus.port);
     }
     private async onRequest(req: IncomingMessage, res: ServerResponse) {
+        this.uptime.set(process.uptime())
         if (req.url! === '/metrics') {
             res.writeHead(200, { 'Content-Type': prom.register.contentType });
             res.write(await prom.register.metrics());
