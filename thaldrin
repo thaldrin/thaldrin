@@ -1,0 +1,20 @@
+#!/bin/bash
+
+echo "Running Script..."
+
+if [ "$1" == "run" ]; then
+    echo "Starting Thaldrin..."
+    docker-compose up -d
+    exit 0
+elif [ "$1" == "build" ]; then
+    echo "Building Thaldrin..."
+    docker-compose build
+    exit 0
+elif [ "$1" == "stop" ]; then
+    echo "Stopping Thaldrin..."
+    docker-compose down
+    exit 0
+fi
+
+
+exit 1
