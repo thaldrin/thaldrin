@@ -23,7 +23,7 @@ export = class Help extends Command {
             await (await Folders()).forEach(async folder => {
                 if (!ctx.isDeveloper && folder === 'developer') return
                 // @ts-ignore
-                return embed.addField(`${lingua[ctx.settings.locale].CATEGORIES[folder.toUpperCase()].name || folder} [\`${[...(await Commands(folder, ctx.client))].length}\`]`, `\`${ctx.config.variables.prefix[2]} help ${folder}\``, true)
+                return embed.addField(`${lingua[ctx.settings.locale].CATEGORIES[folder.toUpperCase()].name || folder} [\`${[...(await Commands(folder, ctx.client))].length}\`]`, `\`${ctx.config.variables.prefix[0]} help ${folder}\``, true)
             })
             embed.setTitle(`${ctx.config.variables.name} Help`)
             return ctx.channel.send(embed)
