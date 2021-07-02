@@ -81,7 +81,7 @@ export = {
             isDeveloper: config.variables.developers.find(dev => dev.id === message.author.id)
         }
         // ! Override Command Restrictions if Message Author is on list of Developers
-        // if (ctx.isDeveloper) cmd.AuthorPermissions = "NONE"
+        if (ctx.isDeveloper) cmd.AuthorPermissions = "NONE"
 
         // ! If Command is NSFW and channel is not marked as such, return
         if (cmd.nsfw && !ctx.channel.nsfw) return ctx.channel.send(
