@@ -4,7 +4,7 @@ import { Context } from '../../utils/types';
 import { MessageEmbed } from 'discord.js';
 import lingua from '../../utils/lingua';
 import replace from '../../utils/replace';
-import { request } from '../../utils/commmand.roleplay';
+import { request } from '../../utils/command.roleplay';
 
 export = class NSFW_Hug extends Command {
     constructor() {
