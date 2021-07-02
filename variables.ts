@@ -2,7 +2,7 @@ export default {
     /**
      * Default Prefixes 
      */
-    prefix: ["<@434662676547764244>", "<@!434662676547764244>", 'thal'],
+    prefix: ['thal', "<@434662676547764244>", "<@!434662676547764244>"],
     /**
      * Developers of the Bot
      */
