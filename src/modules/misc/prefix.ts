@@ -1,9 +1,9 @@
 import Command from '../../handler/structures/Command';
 import { Context, Server } from '../../utils/types';
+import database from "../../utils/database"
 import lingua from '../../utils/lingua';
 import replace from '../../utils/replace';
 import { MessageEmbed } from 'discord.js';
-import database from "../../utils/database"
 export = class Prefix extends Command {
     constructor() {
         super({
@@ -27,7 +27,8 @@ export = class Prefix extends Command {
             case "+":
             case "a":
             case "add": {
-                if (ctx.args === [] || ctx.args.join(' ').trim() === '') return ctx.channel.send('No Prefix was given');
+                // @ts-ignore
+                if (ctx.args === [] || ctx.args.join(' ').trim() === '') return ctx.channel.send(lingua[ctx.settings.locale].MISSING.VALUE.PREFIX);
                 // @ts-ignore
                 let { data, error } = await database.from<Server>("servers").update({ prefix: [...ctx.settings.prefix, `${ctx.args.join(" ").trim()}`] }).match({ server_id: ctx.guild?.id })
                 // @ts-ignore
@@ -54,6 +55,7 @@ export = class Prefix extends Command {
                 const embed = new MessageEmbed()
                     .setColor(ctx.config.variables.color)
                     .setFooter(`${ctx.config.variables.name}`, ctx.config.variables.avatar)
+                    // TODO move this to translation file
                     .setTitle(`Updated Prefixes for ${ctx.guild?.name}`)
                     .setDescription(`Successfully removed \`${ctx.args.join(" ").trim()}\` from the list of prefixes for this Server.`)
 
