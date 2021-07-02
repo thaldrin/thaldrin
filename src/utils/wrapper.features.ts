@@ -1,4 +1,8 @@
 import Sourcefinder from "@thaldrin/sourcefinder";
+// import Sourcefinder from "../../../sourcefinder/build/index";
+
+
+
 import config from "../../config";
 import shortlink from "./shortlink";
 import { Message, TextChannel } from "discord.js";
