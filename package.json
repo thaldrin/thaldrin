@@ -6,9 +6,9 @@
   "scripts": {
     "node:build": "rm -rf build/ && tsc",
     "node:start": "node build/shard.js",
-    "node:dev": "nodemon --ignore \"build/\" -e js,ts --exec \"npm run build && npm run start\"",
+    "node:dev": "nodemon --ignore \"build/\" -e js,ts --exec \"npm run node:build && npm run node:start\"",
     "docker:build": "docker-compose build",
-    "docker:start": "docker-compose up -d",
+    "docker:up": "docker-compose up -d",
     "docker:down": "docker-compose down",
     "git:init": "npm run subs:init && npm run subs:update",
     "subs:init": "git submodule init && git submodule update",
