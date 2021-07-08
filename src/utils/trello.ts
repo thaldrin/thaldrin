@@ -25,6 +25,20 @@ export async function suggest({ title, desc, author, guild }: { title: string, d
 
     return Card
 }
+export async function bug({ title, desc, author, guild }: { title: string, desc?: string, author: string, guild: string }) {
+    let Card = await Trello.addCard({
+        idList: config.trello.options.list.bugs,
+        name: `Bug - ${title}`,
+        desc: `
+        ${desc || title}
+
+        Author: ${author}
+        Server: ${guild}
+        `
+    })
+
+    return Card
+}
 
 
 export default Trello

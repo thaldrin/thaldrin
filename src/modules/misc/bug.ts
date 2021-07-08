@@ -3,12 +3,13 @@ import { Context } from '../../utils/types';
 import SendWS from "../../utils/webhook";
 import lingua from '../../utils/lingua';
 import { suggest } from '../../utils/trello';
+import replace from '../../utils/replace';
 export = class Suggestion extends Command {
     constructor() {
         super({
-            name: "suggest",
-            description: "Suggest a Feature!",
-            aliases: ["suggestion"],
+            name: "bug",
+            description: "Report a Bug",
+            aliases: ["bugreport"],
             cooldown: 10,
         })
     }
@@ -21,9 +22,9 @@ export = class Suggestion extends Command {
         let guild = `${ctx.guild?.name} (${ctx.guild?.id})`
 
         await suggest({ title, desc, author, guild })
-        if (ctx.config?.webhook?.suggestions) await SendWS(ctx.config.webhook.suggestions, { title, desc, ctx })
+        if (ctx.config?.webhook?.bug) await SendWS(ctx.config.webhook.bug, { title, desc, ctx })
 
         // @ts-ignore
-        ctx.channel.send(replace(/VALUE/gi, "Suggestion", lingua[ctx.settings.locale].VALUE_SENT))
+        ctx.channel.send(replace(/VALUE/gi, "Bug Report", lingua[ctx.settings.locale].VALUE_SENT))
     }
 }
