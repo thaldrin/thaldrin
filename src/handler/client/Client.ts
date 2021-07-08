@@ -3,6 +3,7 @@ import { readdirSync as read } from "fs";
 import path from "path";
 import { Command } from "../../utils/types";
 import Logger from "../../utils/logger";
+import { Prom } from "../../utils/prometheus";
 // const server = require('../../website/server');
 
 export default class Thaldrin extends Client {
@@ -24,6 +25,10 @@ export default class Thaldrin extends Client {
 		this.config = config;
 
 		this.lastEval = null;
+		// @ts-ignore
+		this.on("raw", packet => {
+			Prom.events.labels(packet.t).inc()
+		})
 
 		this.login(config.token);
 		this.load();
