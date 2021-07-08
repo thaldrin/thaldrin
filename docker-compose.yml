@@ -24,6 +24,8 @@ services:
     volumes:
       - grafana:/var/lib/grafana
   bot:
+    env_file:
+      - .env.thaldrin.etc
     container_name: thaldrin
     restart: always
     hostname: thaldrin

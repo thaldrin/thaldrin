@@ -4,10 +4,13 @@
   "description": "",
   "main": "build/shard.js",
   "scripts": {
-    "build": "rm -rf build/ && tsc",
-    "start": "node build/shard.js",
-    "dev": "nodemon --ignore \"build/\" -e js,ts --exec \"npm run build && npm run start\"",
-    "init": "npm run subs:init && npm run subs:update",
+    "node:build": "rm -rf build/ && tsc",
+    "node:start": "node build/shard.js",
+    "node:dev": "nodemon --ignore \"build/\" -e js,ts --exec \"npm run build && npm run start\"",
+    "docker:build": "docker-compose build",
+    "docker:start": "docker-compose up -d",
+    "docker:down": "docker-compose down",
+    "git:init": "npm run subs:init && npm run subs:update",
     "subs:init": "git submodule init && git submodule update",
     "subs:update": "git submodule update --remote"
   },

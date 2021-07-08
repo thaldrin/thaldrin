@@ -210,10 +210,5 @@ interface Repository {
 }
 
 interface Scripts {
-    build: string;
-    start: string;
-    dev: string;
-    init: string;
-    "subs:init": string;
-    "subs:update": string;
+    [script: string]: string
 }
