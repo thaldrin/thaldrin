@@ -2,7 +2,7 @@ import Command from '../../handler/structures/Command';
 import { Context } from '../../utils/types';
 import SendWS from "../../utils/webhook";
 import lingua from '../../utils/lingua';
-import { suggest } from '../../utils/trello';
+import { bug } from '../../utils/trello';
 import replace from '../../utils/replace';
 export = class Suggestion extends Command {
     constructor() {
@@ -21,7 +21,7 @@ export = class Suggestion extends Command {
         let author = `${ctx.author.tag} (${ctx.author.id})`
         let guild = `${ctx.guild?.name} (${ctx.guild?.id})`
 
-        await suggest({ title, desc, author, guild })
+        await bug({ title, desc, author, guild })
         if (ctx.config?.webhook?.bug) await SendWS(ctx.config.webhook.bug, { title, desc, ctx })
 
         // @ts-ignore
