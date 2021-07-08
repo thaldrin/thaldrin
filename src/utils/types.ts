@@ -10,7 +10,7 @@ export type Server = {
     shortlinks: boolean
     sourcefinder: boolean
     embeds: boolean
-    interactiontext: boolean
+    interaction_text: boolean
 
 }
 
