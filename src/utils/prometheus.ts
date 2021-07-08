@@ -10,11 +10,10 @@ export default class Prometheus {
     public guildCount!: prom.Gauge<string>
     public totalGuilds!: prom.Gauge<string>
     public uptime!: prom.Gauge<string>
-    // public commmandsRan: prom.Counter<string>
+    public events!: prom.Counter<string>
     #server!: ReturnType<typeof createServer>
 
     load() {
-        // if(!vars.prometheus.port) vars.prometheus.port === 9000
         prom.collectDefaultMetrics()
         this.commandsExecuted = new prom.Counter({
             labelNames: ['command'],
@@ -32,6 +31,11 @@ export default class Prometheus {
         this.totalGuilds = new prom.Gauge({
             name: "thaldrin_guilds_total",
             help: "Total Number of Guilds Thaldrin is in"
+        })
+        this.events = new prom.Counter({
+            labelNames: ['event'],
+            name: "thaldrin_discord_events",
+            help: "Received WebSocket events from Discord"
         })
         this.uptime = new prom.Gauge({
             name: "thaldrin_uptime",
