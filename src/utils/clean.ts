@@ -6,6 +6,8 @@ let SensitiveStrings = [
     config.supabase.url,
     config.apis.sheri,
     config.apis.yiffrest,
+    config.trello.key,
+    config.trello.token,
 ].flat(Infinity)
 
 
