@@ -1,7 +1,7 @@
 import Command from '../../handler/structures/Command';
 import { Context } from '../../utils/types';
 import SendWS from "../../utils/webhook";
-import lingua from '../../utils/lingua';
+import language from '../../utils/language';
 import { bug } from '../../utils/trello';
 import replace from '../../utils/replace';
 export = class Suggestion extends Command {
@@ -17,7 +17,7 @@ export = class Suggestion extends Command {
     async command(ctx: Context) {
         const [title, desc] = ctx.args.join(" ").split("|").map(v => v.trim());
         // @ts-ignore
-        if (!title) return ctx.channel.send(lingua[ctx.settings.locale].MISSING_TITLE)
+        if (!title) return ctx.channel.send(language.get(ctx.settings.locale).missing.title)
         let author = `${ctx.author.tag} (${ctx.author.id})`
         let guild = `${ctx.guild?.name} (${ctx.guild?.id})`
 
@@ -25,6 +25,6 @@ export = class Suggestion extends Command {
         if (ctx.config?.webhook?.bug) await SendWS(ctx.config.webhook.bug, { title, desc, ctx })
 
         // @ts-ignore
-        ctx.channel.send(replace(/VALUE/gi, "Bug Report", lingua[ctx.settings.locale].VALUE_SENT))
+        ctx.channel.send(replace(/VALUE/gi, "Bug Report", language.get(ctx.settings.locale).misc.sent))
     }
 }

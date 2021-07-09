@@ -1,6 +1,6 @@
 import Command from "../../handler/structures/Command";
 import { Context } from "../../utils/types";
-import lingua from "../../utils/lingua";
+import language from "../../utils/language";
 import replace from "../../utils/replace";
 import Roll from 'roll'
 const roll = new Roll()
@@ -20,7 +20,7 @@ export = class Roll extends Command {
 		let diceThrow = roll.roll(Dice)
 
 		// @ts-ignore
-		let RollMessage = await ctx.channel.send(`${replace(/AMOUNT/gi, diceThrow.input.quantity, replace(/DICE/gi, `d${diceThrow.input.sides}`, lingua[ctx.settings.locale].ROLL))}`);
+		let RollMessage = await ctx.channel.send(`${replace(/AMOUNT/gi, diceThrow.input.quantity, replace(/DICE/gi, `d${diceThrow.input.sides}`, language.get(ctx.settings.locale).misc.roll))}`);
 		await RollMessage.edit(`:game_die: **Results**
 		Throws: **${diceThrow.rolled.join("**, **")}**
 		Total: **${diceThrow.result}**`)

@@ -2,7 +2,7 @@
 import Command from '../../handler/structures/Command';
 import { Context } from '../../utils/types';
 import { MessageEmbed } from 'discord.js';
-import lingua from '../../utils/lingua';
+import language from '../../utils/language';
 import replace from '../../utils/replace';
 import { request } from '../../utils/command.roleplay';
 
@@ -18,9 +18,9 @@ export = class Hug extends Command {
 
     async command(ctx: Context) {
         let action = "hug"
-        if (ctx.message.mentions.members?.size === 0) return ctx.channel.send(replace(/ACTION/g, action, lingua[ctx.settings.locale].RP_REQUIRE_MENTION))
-        if (ctx.message.mentions.members?.first()?.id === ctx.client.user?.id) return ctx.channel.send(replace(/ACTION/g, action, lingua[ctx.settings.locale].RP_ME))
-        if (ctx.message.mentions.members?.first()?.id === ctx.author.id) return ctx.channel.send(replace(/ACTION/g, action, lingua[ctx.settings.locale].RP_SELF))
+        if (ctx.message.mentions.members?.size === 0) return ctx.channel.send(replace(/ACTION/g, action, language.get(ctx.settings.locale).missing.mention))
+        if (ctx.message.mentions.members?.first()?.id === ctx.client.user?.id) return ctx.channel.send(replace(/ACTION/g, action, language.get(ctx.settings.locale).rp.client))
+        if (ctx.message.mentions.members?.first()?.id === ctx.author.id) return ctx.channel.send(replace(/ACTION/g, action, language.get(ctx.settings.locale).rp.self))
 
         let users = [ctx.message.author.username, ctx.message.mentions.members?.first()?.user.username]
         let { image, provider, line } = await request(action, ctx.settings.locale, users)

@@ -1,6 +1,6 @@
 import Command from '../../handler/structures/Command';
 import { Context } from '../../utils/types';
-import lingua from '../../utils/lingua';
+import language from '../../utils/language';
 import { Folders, Commands } from "../../utils/command.amount";
 import { MessageEmbed } from 'discord.js';
 
@@ -23,7 +23,7 @@ export = class Help extends Command {
             await (await Folders()).forEach(async folder => {
                 if (!ctx.isDeveloper && folder === 'developer') return
                 // @ts-ignore
-                return embed.addField(`${lingua[ctx.settings.locale].CATEGORIES[folder.toUpperCase()].name || folder} [\`${[...(await Commands(folder, ctx.client))].length}\`]`, `\`${ctx.config.variables.prefix[0]} help ${folder}\``, true)
+                return embed.addField(`${language.get(ctx.settings.locale).categories[folder.toLowerCase()].name || folder} [\`${[...(await Commands(folder, ctx.client))].length}\`]`, `\`${ctx.config.variables.prefix[0]} help ${folder}\``, true)
             })
             embed.setTitle(`${ctx.config.variables.name} Help`)
             return ctx.channel.send(embed)
@@ -34,9 +34,9 @@ export = class Help extends Command {
             let commands = await (await Commands(arg, ctx.client)).map(command => `\`${command.name}\` - ${command.description}`)
             embed.addField("Commands", commands.join("\n"))
             // @ts-ignore
-            embed.setTitle(`${lingua[ctx.settings.locale].CATEGORIES[arg.toUpperCase()].name || arg}`)
+            embed.setTitle(`${language.get(ctx.settings.locale).categories[folder.toLowerCase()].name || arg}`)
             // @ts-ignore
-            embed.setDescription(`${lingua[ctx.settings.locale].CATEGORIES[arg.toUpperCase()].desc || ""}\n\nTotal Commands: **${commands.length}**`)
+            embed.setDescription(`${language.get(ctx.settings.locale).categories[folder.toLowerCase()].desc || ""}\n\nTotal Commands: **${commands.length}**`)
             return ctx.channel.send(embed)
         }
         // @ts-ignore
@@ -46,7 +46,7 @@ export = class Help extends Command {
             embed.setTitle("Command Help")
             if (command.aliases?.length !== 0) embed.addField("Aliases", `⇒\`${command.aliases?.join("`\n⇒`")}\``, true)
             // @ts-ignore
-            embed.setDescription(`**Cooldown:** ${command.cooldown}s\n**Module:** ${lingua[ctx.settings.locale].CATEGORIES[command.module.toUpperCase()].name || command.module}\n**NSFW:** ${command.nsfw}`)
+            embed.setDescription(`**Cooldown:** ${command.cooldown}s\n**Module:** ${language.get(ctx.settings.locale).categories[folder.toLowerCase()].name || command.module}\n**NSFW:** ${command.nsfw}`)
             embed.addField("Usage", `\`thal ${command.name}\` ${command.usage}`, true)
             ctx.channel.send(embed)
         }

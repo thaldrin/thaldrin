@@ -1,6 +1,6 @@
 import Command from '../../handler/structures/Command';
 import { Context } from '../../utils/types';
-import lingua from '../../utils/lingua';
+import language from '../../utils/language';
 import { Guild, GuildMember, MessageEmbed, User as DiscordUser } from 'discord.js';
 import replace from '../../utils/replace';
 
@@ -37,11 +37,11 @@ export = class User extends Command {
 
         Embed
             // @ts-ignore
-            .setTitle(replace(/USER/gi, USER?.nickname || USER.user.username, lingua[ctx.settings.locale].USER_INFO.INFO_ON))
+            .setTitle(replace(/USER/gi, USER?.nickname || USER.user.username, language.get(ctx.settings.locale).user.info))
             // @ts-ignore
-            .addField(lingua[ctx.settings.locale].USER_INFO.USERNAME, USER?.user.tag, true)
+            .addField(language.get(ctx.settings.locale).user.username, USER?.user.tag, true)
             // @ts-ignore
-            .addField(lingua[ctx.settings.locale].USER_INFO.USERID, USER?.user.id, true)
+            .addField(language.get(ctx.settings.locale).user.id, USER?.user.id, true)
         // @ts-ignore
         console.log(USER)
         // let Roles = USER?.roles.cache.map(role => (`<@${role.id}>`))
@@ -49,9 +49,9 @@ export = class User extends Command {
         Embed
             //.addField(lingua[ctx.settings.locale].USER_INFO.ROLES, [Roles].join(", "), false)
             // @ts-ignore
-            .addField(lingua[ctx.settings.locale].USER_INFO.CREATED_DATE, USER?.user.createdAt.toString(), false)
+            .addField(language.get(ctx.settings.locale).user.created, USER?.user.createdAt.toString(), false)
             // @ts-ignore
-            .addField(lingua[ctx.settings.locale].USER_INFO.JOINED_AT, USER?.joinedAt?.toString(), true)
+            .addField(language.get(ctx.settings.locale).user.joined, USER?.joinedAt?.toString(), true)
 
             // @ts-ignore
             .setThumbnail(USER?.user.avatarURL({ format: "png" }))

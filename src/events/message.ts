@@ -5,12 +5,12 @@ import supabase from "../utils/database";
 import { Command, Server, Usage } from "../utils/types";
 import config from "../../config";
 import { Commands, Shortlink, SourceFinder } from "../utils/wrapper.features";
-import lingua from "../utils/lingua";
+import language from "../utils/language";
 import replace from "../utils/replace";
 import chalk from "chalk";
 import Prom from "../utils/init.prometheus";
 
-
+// 
 export = {
     name: "message",
     run: async (client: Client, message: Message) => {
@@ -88,7 +88,7 @@ export = {
             lingua[ctx.settings.locale].CHANNEL_NOT_NSFW
         )
 
-        if (cmd.AuthorPermissions !== "NONE" && ctx.member?.permissions.has(cmd.AuthorPermissions)) return ctx.channel.send(replace(/PERMISSIONS/gm, cmd.AuthorPermissions.join(", "), lingua[ctx.settings.locale].INSUFFICIENT_PERMISSIONS))
+        if (cmd.AuthorPermissions !== "NONE" && ctx.member?.permissions.has(cmd.AuthorPermissions)) return ctx.channel.send(replace(/PERMISSIONS/gm, cmd.AuthorPermissions.join(", "), language.get(ctx.settings.locale).error.permissions))
 
 
         const now = Date.now()
@@ -99,8 +99,8 @@ export = {
             if (now < time) {
                 let CooldownEmbed = new MessageEmbed()
                 const left = (time - now) / 1000
-                let title = replace(/COMMAND/g, cmd.name, lingua[ctx.settings.locale].ON_COOLDOWN)
-                let description = replace(/COMMAND/g, cmd.name, replace(/COOLDOWN/g, `${cmd.cooldown}s`, replace(/TIME/g, left, lingua[ctx.settings.locale].ON_COOLDOWN_DESCRIPTION)))
+                let title = replace(/COMMAND/g, cmd.name, language.get(ctx.settings.locale).error.cooldown.name)
+                let description = replace(/COMMAND/g, cmd.name, replace(/COOLDOWN/g, `${cmd.cooldown}s`, replace(/TIME/g, left, language.get(ctx.settings.locale).error.cooldown.desc)))
                 CooldownEmbed.setTitle(title)
                     .setDescription(description)
                     .setColor("ORANGE")
@@ -133,7 +133,7 @@ export = {
             } catch (error) {
                 // Logger.error(error)
                 console.log(error)
-                let ErrorEmbed = new MessageEmbed().setTitle(replace(/COMMAND/g, cmd.name, lingua[ctx.settings.locale].ON_ERROR)).setDescription(`\`${error.message}\`\n\n\`${error}\``).setColor("RED")
+                let ErrorEmbed = new MessageEmbed().setTitle(replace(/COMMAND/g, cmd.name, language.get(ctx.settings.locale).error.error)).setDescription(`\`${error.message}\`\n\n\`${error}\``).setColor("RED")
                 ctx.channel.send(ErrorEmbed)
             }
         }

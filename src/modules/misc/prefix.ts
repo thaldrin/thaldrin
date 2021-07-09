@@ -1,7 +1,7 @@
 import Command from '../../handler/structures/Command';
 import { Context, Server } from '../../utils/types';
 import database from "../../utils/database"
-import lingua from '../../utils/lingua';
+import language from '../../utils/language';
 import replace from '../../utils/replace';
 import { MessageEmbed } from 'discord.js';
 export = class Prefix extends Command {
@@ -28,7 +28,7 @@ export = class Prefix extends Command {
             case "a":
             case "add": {
                 // @ts-ignore
-                if (ctx.args === [] || ctx.args.join(' ').trim() === '') return ctx.channel.send(lingua[ctx.settings.locale].MISSING.VALUE.PREFIX);
+                if (ctx.args === [] || ctx.args.join(' ').trim() === '') return ctx.channel.send(language.get(ctx.settings.locale).missing.values.prefix);
                 // @ts-ignore
                 let { data, error } = await database.from<Server>("servers").update({ prefix: [...ctx.settings.prefix, `${ctx.args.join(" ").trim()}`] }).match({ server_id: ctx.guild?.id })
                 // @ts-ignore
@@ -45,7 +45,7 @@ export = class Prefix extends Command {
             case "r":
             case "rm":
             case "remove": {
-                if (ctx.args === [] || ctx.args.join(' ').trim() === '') return ctx.channel.send('No Prefix was given');
+                if (ctx.args === [] || ctx.args.join(' ').trim() === '') return ctx.channel.send(language.get(ctx.settings.locale).missing.values.prefix);
                 if (!ctx.settings.prefix.includes(ctx.args.join(" ").trim())) return ctx.channel.send(`\`${ctx.args.join(" ").trim()}\` is not configured as a prefix on this Server.`)
                 let newprefixes = ctx.settings.prefix.filter(prefix => prefix !== ctx.args.join(" ").trim())
                 // @ts-ignore
