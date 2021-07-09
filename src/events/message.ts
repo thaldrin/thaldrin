@@ -76,6 +76,7 @@ export = {
             author: message.author,
             member: message.member,
             supabase,
+            language,
             settings: server_data[0],
             config,
             isDeveloper: config.variables.developers.find(dev => dev.id === message.author.id)
