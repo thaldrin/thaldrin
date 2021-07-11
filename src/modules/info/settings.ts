@@ -3,10 +3,11 @@ import { Context, Server } from '../../utils/types';
 import lingua from '../../utils/lingua';
 import { MessageEmbed } from 'discord.js';
 import database from "../../utils/database"
+import language from '../../utils/language';
 
 function enabled(a: boolean, lang: string) {
     // @ts-ignore
-    return a ? lingua[lang].MISC.ENABLED : lingua[lang].MISC.DISABLED
+    return a ? language.get(lang).misc.enabled : language.get(lang).misc.disabled;
 }
 
 export = class Settings extends Command {
