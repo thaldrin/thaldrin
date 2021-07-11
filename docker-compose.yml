@@ -39,6 +39,7 @@ services:
       - default
 networks:
   lantern:
+    external: true
 volumes:
   grafana:
   prometheus:
