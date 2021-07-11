@@ -10,7 +10,9 @@ RUN apk add --no-cache git
 RUN npm i -g typescript
 RUN rm -rf build
 
+RUN npm i
 RUN tsc --sourceMap false
+
 
 RUN rm -rf src
 RUN npm cache clean --force
