@@ -10,7 +10,9 @@ RUN apk add --no-cache git
 RUN npm i -g typescript
 
 RUN npm i
-RUN "rm -rf build/ && tsc && cp -r src/utils/lingua/langs build/src/utils/lingua/langs"
+RUN rm -rf build 
+RUN tsc 
+RUN cp -r src/utils/lingua/langs build/src/utils/lingua/langs
 
 
 RUN rm -rf src
