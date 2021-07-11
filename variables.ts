@@ -29,14 +29,14 @@ export default {
         {
             id: "356323373443448843",
             link: "https://twitter.com/ThalLycal",
-            nick: "Zuroth",
+            nick: "Thal",
             reason: "Letting me use his Sona as a Mascot. <:lioLove:760165648063397942> "
         },
     ],
     /**
      * Name of the Bot 
      */
-    name: "Thaldrin Beta",
+    name: "Thaldrin",
     source: `[t8.pm/source](https://t8.pm/source)`,
     avatar: "https://thaldrin.media/avatar.png",
     support: {
