@@ -8,10 +8,9 @@ WORKDIR /opt/thaldrin
 COPY . .
 RUN apk add --no-cache git
 RUN npm i -g typescript
-RUN rm -rf build
 
 RUN npm i
-RUN tsc --sourceMap false
+RUN "rm -rf build/ && tsc && cp -r src/utils/lingua/langs build/src/utils/lingua/langs"
 
 
 RUN rm -rf src
