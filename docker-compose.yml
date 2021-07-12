@@ -27,6 +27,10 @@ services:
     container_name: thaldrin
     restart: always
     hostname: cadaver
+    dns:
+      - 1.1.1.1
+      - 1.0.0.1
+    network_mode: "bridge"
     build: .
     ports:
       - 3621:3621
