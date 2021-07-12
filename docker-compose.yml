@@ -28,19 +28,18 @@ services:
     restart: always
     hostname: cadaver
     dns:
-      - 1.1.1.1
-      - 1.0.0.1
-    network_mode: "bridge"
+	- 1.1.1.1
+	- 1.0.0.1
     build: .
     ports:
-      - 3621:3621
+	- 3621:3621
     depends_on:
       - prometheus
     volumes:
       - ./config.ts:/opt/thaldrin/config.ts
-    # networks:
-    #   - lantern
-    #   - default
+     networks:
+       - lantern
+       - default
 networks:
   lantern:
     external: true
