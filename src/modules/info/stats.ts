@@ -1,6 +1,6 @@
 import Command from '../../handler/structures/Command';
 import { Context, Usage } from '../../utils/types';
-import lingua from '../../utils/lingua';
+// import lingua from '../../utils/lingua';
 import { MessageEmbed } from 'discord.js';
 import CommandUsage from '../../utils/command.usage';
 import { commitHash } from "../../utils/git"
@@ -42,7 +42,7 @@ export = class Stats extends Command {
 
         let embed = new MessageEmbed().setColor(ctx.config.variables.color).setFooter(`${ctx.config.variables.name} v${ctx.config.pkg.version} [${commitHash}]`, ctx.config.variables.avatar)
             .setTitle(`Statistics`)
-            .setDescription(`Visit [our System Dashboard](https://system.thaldr.in) for more in-depth stats`)
+            // .setDescription(`Visit [our System Dashboard](https://system.thaldr.in) for more in-depth stats`)
             .addField(`Misc`, MiscValues.map((value) => `${value}`))
 
 

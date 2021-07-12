@@ -1,5 +1,5 @@
-import { Prom } from "./prometheus";
+// import { Prom } from "./prometheus";
 
-Prom.load()
+// Prom.load()
 
-export default Prom
+// export default Prom
