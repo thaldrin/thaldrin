@@ -38,9 +38,9 @@ services:
       - prometheus
     volumes:
       - ./config.ts:/opt/thaldrin/config.ts
-    networks:
-      - lantern
-      - default
+    # networks:
+    #   - lantern
+    #   - default
 networks:
   lantern:
     external: true
