@@ -30,13 +30,13 @@ export = class Help extends Command {
         }
         let arg = ctx.args[0]
         if (await (await Folders()).includes(arg)) {
-            if (arg === 'developer') return
+            if (arg === 'developer' && !ctx.isDeveloper) return
             let commands = await (await Commands(arg, ctx.client)).map(command => `\`${command.name}\` - ${command.description}`)
             embed.addField("Commands", commands.join("\n"))
             // @ts-ignore
-            embed.setTitle(`${language.get(ctx.settings.locale).categories[folder.toLowerCase()].name || arg}`)
+            embed.setTitle(`${language.get(ctx.settings.locale).categories[command?.module.toLowerCase()].name || arg}`)
             // @ts-ignore
-            embed.setDescription(`${language.get(ctx.settings.locale).categories[folder.toLowerCase()].desc || ""}\n\nTotal Commands: **${commands.length}**`)
+            embed.setDescription(`${language.get(ctx.settings.locale).categories[command?.module.toLowerCase()].desc || ""}\n\nTotal Commands: **${commands.length}**`)
             return ctx.channel.send(embed)
         }
         // @ts-ignore
@@ -46,7 +46,7 @@ export = class Help extends Command {
             embed.setTitle("Command Help")
             if (command.aliases?.length !== 0) embed.addField("Aliases", `⇒\`${command.aliases?.join("`\n⇒`")}\``, true)
             // @ts-ignore
-            embed.setDescription(`**Cooldown:** ${command.cooldown}s\n**Module:** ${language.get(ctx.settings.locale).categories[folder.toLowerCase()].name || command.module}\n**NSFW:** ${command.nsfw}`)
+            embed.setDescription(`**Cooldown:** ${command.cooldown}s\n**Module:** ${language.get(ctx.settings.locale).categories[command?.module.toLowerCase()].name || command.module}\n**NSFW:** ${command.nsfw}`)
             embed.addField("Usage", `\`thal ${command.name}\` ${command.usage}`, true)
             ctx.channel.send(embed)
         }

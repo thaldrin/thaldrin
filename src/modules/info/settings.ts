@@ -7,7 +7,7 @@ import language from '../../utils/language';
 
 function enabled(a: boolean, lang: string) {
     // @ts-ignore
-    return a ? language.get(lang).misc.enabled : language.get(lang).misc.disabled;
+    return a ? language.get(lang).misc.enabled : language.get(lang).misc.disabled; w
 }
 
 export = class Settings extends Command {
