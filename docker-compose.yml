@@ -24,22 +24,22 @@ services:
     volumes:
       - grafana:/var/lib/grafana
   bot:
-    container_name: thaldrin
-    restart: always
-    hostname: cadaver
-    dns:
-	    - 1.1.1.1
-	    - 1.0.0.1
-    build: .
-    ports:
-	    - 3621:3621
-    depends_on:
-      - prometheus
-    volumes:
-      - ./config.ts:/opt/thaldrin/config.ts
-     networks:
-       - lantern
-       - default
+  container_name: thaldrin
+  restart: always
+  hostname: cadaver
+  dns:
+    - 1.1.1.1
+    - 1.0.0.1
+  build: .
+  ports:
+    - 3621:3621
+  depends_on:
+    - prometheus
+  volumes:
+    - ./config.ts:/opt/thaldrin/config.ts
+  networks:
+    - lantern
+    - default
 networks:
   lantern:
 volumes:
