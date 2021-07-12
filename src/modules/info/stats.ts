@@ -42,8 +42,8 @@ export = class Stats extends Command {
 
         let embed = new MessageEmbed().setColor(ctx.config.variables.color).setFooter(`${ctx.config.variables.name} v${ctx.config.pkg.version} [${commitHash}]`, ctx.config.variables.avatar)
             .setTitle(`Statistics`)
-            // .setDescription(`Visit [our System Dashboard](https://system.thaldr.in) for more in-depth stats`)
-            .addField(`Misc`, MiscValues.map((value) => `${value}`))
+            .setDescription(MiscValues.map((value) => `${value}`))
+        // .addField(`Misc`, )
 
 
         ctx.channel.send(embed)

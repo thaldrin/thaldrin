@@ -8,13 +8,13 @@ import { Commands, Shortlink, SourceFinder } from "../utils/wrapper.features";
 import language from "../utils/language";
 import replace from "../utils/replace";
 import chalk from "chalk";
-import Prom from "../utils/init.prometheus";
+// import Prom from "../utils/init.prometheus";
 
-// 
+
 export = {
     name: "message",
     run: async (client: Client, message: Message) => {
-        Prom.messagesSeen.inc()
+        // Prom.messagesSeen.inc()
         if (message.author.bot) return
         if (message.channel.type === "dm") return
 
@@ -124,7 +124,7 @@ export = {
 
                 }
 
-                Prom.commandsExecuted.inc()
+                // Prom.commandsExecuted.inc()
                 let { data: command_usage_data, command_usage_error } = await supabase.from<Usage>('usage').update({ amount: (usage_check_data[0] || { amount: 0 }).amount + 1 }).select().eq("name", cmd.name)
                 Logger.info({
                     type: "command:executed",

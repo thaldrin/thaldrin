@@ -1,6 +1,6 @@
 {
   "name": "thaldrin",
-  "version": "4.0-dev",
+  "version": "4",
   "description": "",
   "main": "build/shard.js",
   "scripts": {

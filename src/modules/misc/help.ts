@@ -34,9 +34,9 @@ export = class Help extends Command {
             let commands = await (await Commands(arg, ctx.client)).map(command => `\`${command.name}\` - ${command.description}`)
             embed.addField("Commands", commands.join("\n"))
             // @ts-ignore
-            embed.setTitle(`${language.get(ctx.settings.locale).categories[command?.module.toLowerCase()].name || arg}`)
+            embed.setTitle(`${language.get(ctx.settings.locale).categories[arg].name || arg}`)
             // @ts-ignore
-            embed.setDescription(`${language.get(ctx.settings.locale).categories[command?.module.toLowerCase()].desc || ""}\n\nTotal Commands: **${commands.length}**`)
+            embed.setDescription(`${language.get(ctx.settings.locale).categories[arg].desc || ""}\n\nTotal Commands: **${commands.length}**`)
             return ctx.channel.send(embed)
         }
         // @ts-ignore
