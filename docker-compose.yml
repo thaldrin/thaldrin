@@ -1,28 +1,28 @@
 version: "3.8"
 services:
-  prometheus:
-    container_name: prometheus
-    build: ./lantern/prometheus
-    restart: always
-    networks:
-      - lantern
-    ports:
-      - 9090:9090
-    volumes:
-      - prometheus:/var/lib/prometheus
-  grafana:
-    container_name: grafana
-    image: grafana/grafana
-    restart: always
-    depends_on:
-      - prometheus
-      - bot
-    ports:
-      - 3000:3000
-    networks:
-      - lantern
-    volumes:
-      - grafana:/var/lib/grafana
+#   prometheus:
+#     container_name: prometheus
+#     build: ./lantern/prometheus
+#     restart: always
+#     networks:
+#       - lantern
+#     ports:
+#       - 9090:9090
+#     volumes:
+#       - prometheus:/var/lib/prometheus
+#   grafana:
+#     container_name: grafana
+#     image: grafana/grafana
+#     restart: always
+#     depends_on:
+#       - prometheus
+#       - bot
+#     ports:
+#       - 3000:3000
+#     networks:
+#       - lantern
+#     volumes:
+#       - grafana:/var/lib/grafana
   bot:
     container_name: thaldrin
     restart: always
@@ -34,8 +34,8 @@ services:
     build: .
     ports:
       - 3621:3621
-    depends_on:
-      - prometheus
+#     depends_on:
+#       - prometheus
     volumes:
       - ./config.ts:/opt/thaldrin/config.ts
     # networks:
@@ -43,7 +43,6 @@ services:
     #   - default
 networks:
   lantern:
-    external: true
 volumes:
   grafana:
   prometheus:
