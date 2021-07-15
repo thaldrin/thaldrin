@@ -32,6 +32,12 @@ export default {
             nick: "Thal",
             reason: "Letting me use his Sona as a Mascot. <:lioLove:760165648063397942> "
         },
+        {
+            id: "237359484488384512",
+            link: "https://github.com/Flolon",
+            nick: "Flo",
+            reason: "Providing a Host for Thaldrin "
+        },
     ],
     /**
      * Name of the Bot 
