@@ -47,7 +47,7 @@ export default {
     avatar: "https://thaldrin.media/avatar.png",
     support: {
         id: "828978320279863306",
-        invite: "https://thaldr.in/"
+        invite: "https://t8.pm/support"
     },
     tagline: "A Random Image and Utility Bot",
     color: "#ff995d",
