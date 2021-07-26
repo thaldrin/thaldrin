@@ -1,6 +1,9 @@
-config.ts
+# Preevent accidental commits of various config files
+*config.*
+.env*
+
+# don't commit builds, modules, logs, or editor settings
 node_modules/
 build/
 logs/
 .vscode
-.env*
