@@ -1,6 +1,25 @@
 import { SupabaseClient } from "@supabase/supabase-js";
 import { Client, Guild, GuildMember, Message, NewsChannel, TextChannel, User } from "discord.js";
 import Thaldrin from "../handler/client/Client";
+
+export type Features =
+    | "shortlinks"
+    | "shortlink"
+    | "sl"
+
+
+    | "sauce"
+    | "source"
+    | "sourcefinder"
+    | "sf"
+
+    | "embeds"
+    | "embedimages"
+
+    | "rp"
+    | "interactiontext"
+
+
 export type Server = {
     readonly id: string
     server_id: string
