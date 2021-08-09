@@ -17,6 +17,7 @@
     "downlevelIteration": true,
     "newLine": "lf",
     "strict": true,
+    "experimentalDecorators": true,
     "strictBindCallApply": true,
     "strictPropertyInitialization": false,
     "declaration": true
