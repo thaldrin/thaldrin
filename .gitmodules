@@ -1,9 +1,9 @@
 [submodule "src/utils/lingua"]
 	path = src/utils/lingua
 	url = git@github.com:thaldrin/lingua.git
-[submodule "lux"]
-	path = lux
-	url = git@github.com:thaldrin/lux.git
 [submodule "src/utils/modulus"]
 	path = src/utils/modulus
 	url = git@github.com:thaldrin/modulus.git
+[submodule "src/lux"]
+	path = src/lux
+	url = git@github.com:thaldrin/lux.git

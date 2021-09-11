@@ -41,8 +41,15 @@ services:
     # networks:
     #   - lantern
     #   - default
-# networks:
-#   lantern:
+    # cultum:
+  #   container_name: cultum
+  #   restart: always
+  #   hostname: cultum
+  #   dns:
+  #     - 1.1.1.1
+  #     - 1.0.0.1
+  #   network_mode: "bridge"
+  #   build:
 volumes:
   grafana:
   prometheus:
