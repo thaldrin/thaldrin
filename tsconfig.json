@@ -20,7 +20,7 @@
     "experimentalDecorators": true,
     "strictBindCallApply": true,
     "strictPropertyInitialization": false,
-    "declaration": true
+    "declaration": false
   },
   "include": ["**/*"],
   "exclude": [

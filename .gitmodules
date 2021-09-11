@@ -4,6 +4,6 @@
 [submodule "src/utils/modulus"]
 	path = src/utils/modulus
 	url = git@github.com:thaldrin/modulus.git
-[submodule "src/lux"]
-	path = src/lux
+[submodule "lux"]
+	path = lux
 	url = git@github.com:thaldrin/lux.git
