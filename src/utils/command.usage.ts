@@ -1,19 +1,16 @@
-import supabase from "./database";
-import { Command, Usage } from "./types";
+// import supabase from "./database";
+// import { Command, Usage } from "./types";
+// import modulus from "./database"
+// type C = { name: string; amount: number };
 
-type C = { name: string; amount: number };
+// export default async function usage(c: Map<string, Command>) {
+//   let commands: C[] = [];
 
-export default async function usage(c: Map<string, Command>) {
-  let commands: C[] = [];
+//   let data = modulus.
+//     for(const command in data) {
+//     // @ts-ignore
+//     commands.push({ name: data[command].name, amount: data[command].amount });
+//   }
 
-  let { data, error } = await supabase
-    .from<Usage>("usage")
-    .select()
-    .filter("type", "eq", "command");
-  for (const command in data) {
-    // @ts-ignore
-    commands.push({ name: data[command].name, amount: data[command].amount });
-  }
-
-  return commands.sort((a, b) => a.amount - b.amount);
-}
+//   return commands.sort((a, b) => a.amount - b.amount);
+// }

@@ -1,7 +1,7 @@
 import config from '../../config'
 import replace from './replace'
 let SensitiveStrings = [
-    config.token,
+    config.discord?.token,
     config.supabase.key,
     config.supabase.url,
     config.apis.sheri,
