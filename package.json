@@ -4,7 +4,7 @@
   "description": "",
   "main": "build/shard.js",
   "scripts": {
-    "node:build": "rm -rf build/ && tsc && cp -r src/utils/lingua/langs build/src/utils/lingua/langs",
+    "node:build": "rm -rf build/ && tsc && cp -r src/utils/lingua/langs build/src/utils/lingua/langs && cp cultum.config.yml build/cultum.config.yml",
     "node:start": "node build/shard.js",
     "node:dev": "nodemon --ignore \"build/\" -e js,ts --exec \"npm run node:build && npm run node:start\"",
     "docker:build": "docker-compose build",
@@ -27,6 +27,7 @@
   "homepage": "https://github.com/thaldrin/thaldrin#readme",
   "dependencies": {
     "@supabase/supabase-js": "^1.7.7",
+    "@thaldrin/eu": "^0.0.5",
     "@thaldrin/sourcefinder": "^1.0.3",
     "axios": "^0.21.1",
     "chalk": "^4.1.0",
