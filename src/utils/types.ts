@@ -1,6 +1,6 @@
 import { SupabaseClient } from "@supabase/supabase-js";
 import { Client, Guild, GuildMember, Message, NewsChannel, TextChannel, User } from "discord.js";
-import Thaldrin from "../handler/client/Client";
+import { EuClient } from "@thaldrin/eu/build/misc/types";
 
 export type Features =
     | "shortlinks"
@@ -56,14 +56,14 @@ export type Command = {
 
 
 export type Context = {
-    client: Thaldrin;
+    client: EuClient;
     args: string[]
     guild: Guild | null;
     message: Message;
     channel: TextChannel | NewsChannel;
     author: User;
     member: GuildMember | null;
-    supabase: SupabaseClient;
+    modulus: any;
     settings: Server;
     config: Config;
     isDeveloper: string[]
@@ -88,7 +88,15 @@ export interface Config {
     /**
      * Discord API Token
      */
-    token: string;
+    discord?: {
+        token?: string
+    };
+    /**
+     * Revolt API Token
+     */
+    revolt?: {
+        token?: string
+    };
     /**
      * Config Strings for Supabase
      * Thaldrin's Database
@@ -183,9 +191,6 @@ export interface Variables {
     }
     website: string
     invite: any;
-    prometheus: {
-        port: number
-    }
 }
 
 export interface Pkg {

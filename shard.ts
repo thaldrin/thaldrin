@@ -1,8 +1,9 @@
-import { ShardingManager } from "discord.js";
+import { Discord } from "@thaldrin/eu";
 import config from "./config";
 import figlet from "figlet"
-let Sharder = new ShardingManager('./build/index.js', {
-    token: config.token,
+
+let Sharder = new Discord.ShardingManager('./build/index.js', {
+    token: config.discord?.token,
     totalShards: "auto"
 })
 import chalk from "chalk"
