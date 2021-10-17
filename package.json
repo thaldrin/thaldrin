@@ -1,0 +1,33 @@
+{
+  "name": "thaldrin",
+  "version": "5",
+  "main": "build/shard.js",
+  "scripts": {
+    "node:build": "rm -rf build/ && tsc && cp -r src/modules/lingua/langs build/src/modules/lingua/langs",
+    "node:start": "node build/shard.js",
+    "node:dev": "nodemon --ignore \"build/\" -e js,ts --exec \"npm run node:build && npm run node:start\"",
+    "docker:build": "docker-compose build",
+    "docker:up": "docker-compose up -d",
+    "docker:down": "docker-compose down",
+    "git:init": "npm run subs:init && npm run subs:update",
+    "subs:init": "git submodule init && git submodule update",
+    "subs:update": "git submodule update --remote"
+  },
+  "dependencies": {
+    "@thaldrin/sourcefinder": "^1.0.3",
+    "@types/node": "^16.11.0",
+    "@types/ws": "^8.2.0",
+    "axios": "^0.23.0",
+    "discord.js": "^13.2.0",
+    "js-yaml": "^4.1.0",
+    "module-alias": "^2.2.2",
+    "revolt-api": "^0.5.3-alpha.0-patch.0",
+    "revolt.js": "^5.1.0-alpha.0-patch.0",
+    "wavy": "^1.0.4"
+  },
+  "devDependencies": {
+    "@types/express": "^4.17.13",
+    "@types/js-yaml": "^4.0.3",
+    "typescript": "^4.4.3"
+  }
+}
