@@ -1,0 +1,15 @@
+[submodule "src/modules/modulus"]
+	path = src/modules/modulus
+	url = git@github.com:thaldrin/modulus.git
+[submodule "src/modules/lingua"]
+	path = src/modules/lingua
+	url = git@github.com:thaldrin/lingua.git
+[submodule "lux"]
+	path = lux
+	url = git@github.com:thaldrin/lux.git
+[submodule "cultum"]
+	path = cultum
+	url = git@github.com:thaldrin/cultum.git
+[submodule "src/modules/eu"]
+	path = src/modules/eu
+	url = git@github.com:thaldrin/eu.git
