@@ -1,0 +1,22 @@
+version: "3.8"
+services:
+  cultum:
+    container_name: cultum
+    hostname: cultum
+    restart: always
+    network_mode: "bridge"
+    ports:
+      - 80:80
+    volumes:
+      - ./lux/cultum/config.yml:/opt/cultum/config.yml
+    build: ./cultum
+  thaldrin:
+    build: .
+    container_name: thaldrin
+    hostname: cadaver
+    depends_on:
+      - cultum
+    restart: always
+    network_mode: "bridge"
+    volumes:
+      - ./config.ts:/opt/thaldrin/config.ts
