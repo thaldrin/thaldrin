@@ -5,6 +5,9 @@ services:
     hostname: cultum
     restart: always
     network_mode: "bridge"
+    dns:
+      - 1.1.1.1
+      - 1.0.0.1
     ports:
       - 80:80
     volumes:
@@ -18,5 +21,8 @@ services:
       - cultum
     restart: always
     network_mode: "bridge"
+    dns:
+      - 1.1.1.1
+      - 1.0.0.1
     volumes:
       - ./config.ts:/opt/thaldrin/config.ts
