@@ -1,21 +1,22 @@
+// import "../../src/utils/patch"
+
 import { Message, Collection, TextChannel, MessageEmbed } from 'discord.js';
-import { Context } from '../../utils/types';
-import { EuClient } from '../../modules/eu/src/misc/types';
-import modulus from '../../utils/modulus'
-import prefixHandler from '../../utils/prefix'
-import config from '../../utils/config';
-import language from '../../utils/language';
-import replace from '../../utils/replace';
+import { Context } from '@utils/types';
+import { EuClient } from '@modules/eu/src/misc/types';
+import modulus from '@utils/modulus'
+import prefixHandler from '@utils/prefix'
+import config from '@utils/config';
+import language from '@utils/language';
+import replace from '@utils/replace';
 export = {
     name: "messageCreate",
     run: async (Eu: EuClient, message: Message) => {
         if (message.author.bot) return;
-
         let helper = await prefixHandler(message.guild.id, message.content)
         if (!helper.success) return
 
         // @ts-ignore
-        const cmd = Eu.commands.find((c) => c.name == helper.command || (c.aliases && c.aliases.includes(helper.command)))
+        const cmd = Eu.commands.find((c) => c.name.toLowerCase() == helper.command || (c.aliases && c.aliases.includes(helper.command)))
         if (!cmd) return
 
         if (!Eu.cooldowns.has(cmd.name)) {
@@ -69,7 +70,7 @@ export = {
             try {
                 await cmd.run(ctx)
             } catch (error) {
-
+                console.error(error)
                 let ErrorEmbed = new MessageEmbed().setTitle(replace(/COMMAND/g, cmd.name, language.get(ctx.settings.locale).error.error)).setDescription(`\`${error.message}\`\n\n\`${error}\``).setColor("RED")
                 return message.channel.send({ embeds: [ErrorEmbed] })
             }

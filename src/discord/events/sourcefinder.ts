@@ -1,8 +1,7 @@
 import { Message } from 'discord.js';
-import Shortlink from '../../utils/shortlink';
-import { EuClient } from '../../modules/eu/src/misc/types';
-import modulus from '../../utils/modulus'
-import sauce from '../../utils/sourcefinder'
+import { EuClient } from '@modules/eu/src/misc/types';
+import modulus from '@utils/modulus'
+import sauce from '@utils/sourcefinder'
 export = {
     name: "messageCreate",
     run: async (Eu: EuClient, message: Message) => {
