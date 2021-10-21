@@ -1,7 +1,8 @@
-require("module-alias/register")
+import "./src/utils/patch"
 
-import { Discord } from "./src/modules/eu/src/index"
-import config from "./src/utils/config"
+
+import { Discord } from "@modules/eu/src/index"
+import config from "@utils/config"
 
 let Sharder = new Discord.ShardingManager('./build/index.js',
     {
