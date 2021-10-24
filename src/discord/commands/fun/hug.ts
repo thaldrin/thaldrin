@@ -1,20 +1,19 @@
 import { Context } from "@utils/types"
 import { Command } from "@modules/eu/src/index"
-import request from "@utils/animals"
+import { request } from "@utils/command.roleplay"
 import EmbeddingHandler from "@utils/Embed"
 
-export = class Hyena extends Command {
+export = class Hug extends Command {
     constructor() {
         super({
-            name: "hyena",
-            aliases: ["yeen"],
-            description: "Sends a random yeen",
+            name: "hug",
+            description: "Hug a fellow fur!",
         })
 
     }
 
     async run(context: Context): Promise<any> {
-        let data = await request("hyena")
+        let data = await request("hug", context.settings.locale)
         let Embed = new EmbeddingHandler(context, data)
 
 

@@ -22,18 +22,18 @@ export default async function request(animal: animal) {
             return { image: proxied, provider: "shibe.online" };
         }
         case "fox": {
-            let image = await yiff.thaldrin("foxes")
-            image.url = "https://proxy.thaldrin.media/" + image.url
+            let request = await yiff.thaldrin("foxes")
+            let image = "https://proxy.thaldrin.media/" + request.url
             return { image, provider: "thaldr.in" };
         }
         case "hyena": {
-            let image = await yiff.thaldrin("yeens")
-            image.url = "https://proxy.thaldrin.media/" + image.url
+            let request = await yiff.thaldrin("yeens")
+            let image = "https://proxy.thaldrin.media/" + request.url
             return { image, provider: "thaldr.in" };
         }
         case "wolf": {
-            let image = await yiff.thaldrin("wolves")
-            image.url = "https://proxy.thaldrin.media/" + image.url
+            let request = await yiff.thaldrin("wolves")
+            let image = "https://proxy.thaldrin.media/" + request.url
             return { image, provider: "thaldr.in" };
         }
     }

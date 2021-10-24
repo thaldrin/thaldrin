@@ -1,7 +1,7 @@
 import { Context } from "@utils/types"
 import { Command } from "@modules/eu/src/index"
 import request from "@utils/animals"
-import { MessageEmbed } from "discord.js"
+import EmbeddingHandler from "@utils/Embed"
 
 export = class Bird extends Command {
     constructor() {
@@ -14,18 +14,10 @@ export = class Bird extends Command {
     }
 
     async run(context: Context): Promise<any> {
-        let { image, provider } = await request("bird")
-        // console.log({ image, provider })
-        if (context.settings.embeds) {
-            let Embed = new MessageEmbed()
-                .setImage(image[0])
-                .setFooter(`Thaldrin - Image provided by ${provider}`, "https://thaldrin.media/avatar.png")
-                .setColor("ORANGE")
+        let data = await request("bird")
+        let Embed = new EmbeddingHandler(context, data)
 
-            context.channel.send({ embeds: [Embed] })
-        }
-        else {
-            context.channel.send(image[0])
-        }
+
+        return Embed.get()
     }
 }
