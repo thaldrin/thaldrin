@@ -1,6 +1,6 @@
 {
   "name": "thaldrin",
-  "version": "5",
+  "version": "5.0.0",
   "main": "build/shard.js",
   "scripts": {
     "node:build": "rm -rf build/ && tsc && cp -r src/modules/lingua/langs build/src/modules/lingua/langs",
