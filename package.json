@@ -11,7 +11,8 @@
     "docker:down": "docker-compose down",
     "git:init": "npm run subs:init && npm run subs:update",
     "subs:init": "git submodule init && git submodule update",
-    "subs:update": "git submodule update --remote"
+    "subs:update": "git submodule update --remote",
+    "rebuild": "node docker.js"
   },
   "dependencies": {
     "@thaldrin/sourcefinder": "^1.0.3",

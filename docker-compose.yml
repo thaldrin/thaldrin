@@ -4,10 +4,9 @@ services:
     container_name: cultum
     hostname: cultum
     restart: always
-    network_mode: "bridge"
-    dns:
-      - 1.1.1.1
-      - 1.0.0.1
+    networks:
+      prism:
+        ipv4_address: 172.25.36.69
     ports:
       - 80:80
     volumes:
@@ -20,9 +19,15 @@ services:
     depends_on:
       - cultum
     restart: always
-    network_mode: "bridge"
-    dns:
-      - 1.1.1.1
-      - 1.0.0.1
+    networks:
+      prism:
+        ipv4_address: 172.25.36.21
     volumes:
       - ./config.ts:/opt/thaldrin/config.ts
+
+networks:
+  prism:
+    driver: bridge
+    ipam:
+      config:
+        - subnet: 172.25.36.0/24
